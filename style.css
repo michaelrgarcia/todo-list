@@ -1,0 +1,70 @@
+* {
+    margin: 0;
+    padding: 0;
+
+    line-height: 1.5;
+    font-family: 'Courier New', sans-serif;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    background-color: #121212;
+}
+
+#content {
+    height: 100%;
+}
+
+button {
+    user-select: none;
+}
+
+header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    
+    height: 10%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.75);
+}
+
+header > * {
+    margin-top: 10px;
+    
+    color: #8b8b8b;
+}
+
+#logo {
+    font-size: 3vh;
+    font-weight: bold;
+}
+
+#control-panel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+
+    margin-left: 10px;
+}
+
+#control-panel > span {
+    font-size: 1.5vh;
+}
+
+#control-panel button {
+    width: 25px;
+
+    border-radius: 30px;
+    border: none;
+
+    background-color: #717171;
+    color: #282828;
+
+    text-align: center;
+    font-size: 1em;
+    font-weight: bold;
+}
