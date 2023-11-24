@@ -9,7 +9,9 @@
 <body>
     <div id="content">
         <header>
-            <p id="logo">To-Do List</p>
+            <div id="logo">
+                <p>To-Do List</p>
+            </div>
             <span id="control-panel">
                 <span>0 completed</span>
                 <button type="button">+</button>
@@ -17,6 +19,28 @@
                 <button type="button">⚙</button>
             </span>
         </header>
+        <main>
+            <div id="sidebar">
+                <ul id="task-filter">
+                    <li>today</li>
+                    <li>7 days</li>
+                    <li>more</li>
+                </ul>
+                <ul id="projects">
+                    <li>
+                            <div class="project-color"></div>
+                            <span class="task-num">0</span>
+                            <span class="project-name">Hello</span>
+                    </li>
+                    <li>
+                        <div class="project-color"></div>
+                        <span class="task-num">1</span>
+                        <span class="project-name">HelloHellofsdfsfsssssssssssssssssssssss</span>
+                    </li>
+                    <button type="button" id="add-project">Add project</button>
+                </ul>
+            </div>
+        </main>
     </div>
     <script src="main.js"></script>
 </body>
