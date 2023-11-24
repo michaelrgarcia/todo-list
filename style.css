@@ -16,22 +16,33 @@ body {
 
 #content {
     height: 100%;
+
+    display: grid;
+    grid-template-rows: 10vh 90vh;
+    grid-template-columns: 40vw 60vw;
+    align-content: center;
 }
 
 button {
     user-select: none;
 }
 
+header > *, 
+#task-filter,
+#add-project {
+    color: #8b8b8b;
+}
+
 header {
     display: flex;
     justify-content: space-around;
-    align-items: center;
+    grid-column: span 3;
     
-    height: 10%;
     border-bottom: 1px solid rgba(255, 255, 255, 0.75);
 }
 
-header > * {
+header > *,
+#task-filter {
     margin-top: 10px;
     
     color: #8b8b8b;
@@ -40,6 +51,12 @@ header > * {
 #logo {
     font-size: 3vh;
     font-weight: bold;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-column-start: 1;
+    
 }
 
 #control-panel {
@@ -53,6 +70,7 @@ header > * {
 
 #control-panel > span {
     font-size: 1.5vh;
+    font-style: italic;
 }
 
 #control-panel button {
@@ -68,3 +86,112 @@ header > * {
     font-size: 1em;
     font-weight: bold;
 }
+
+#control-panel button:hover {
+    background-color: #aaa8a8bd;
+
+    cursor: pointer;
+}
+
+main {
+    display: grid;
+    grid-row-start: 2;
+
+    margin-top: 30px;
+}
+
+#sidebar {
+    grid-column-start: 1;
+
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    gap: 10px;
+
+}
+
+#task-filter {
+    list-style-type: none;
+
+    display: flex;
+    gap: 15px;
+
+    font-size: 1.4vh;
+}
+
+#task-filter li:hover {
+    cursor: pointer;
+    
+    color: #c4c4c4;
+    text-decoration: underline;
+}
+
+#projects {
+    list-style-type: none;
+
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+    gap: 13px;
+
+    margin-top: 10px;
+
+    color: #575757;
+}
+
+#projects li {
+    display: flex;
+    justify-content: start;
+    gap: 10px;
+
+    font-size: 2vh;
+}
+
+#projects li:hover {
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.project-name {
+    font-weight: bold;
+    align-self: center;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 15vw;
+}
+
+.project-color {
+    background-color: white;
+    width: 10px;
+}
+
+#projects .task-num {
+    font-size: 1.9vh;
+
+    align-self: flex-end;
+
+    margin-left: -5px;
+}
+
+#add-project {
+    background-color: #717171;
+    color: #282828;
+
+    font-weight: bold;
+
+    border-radius: 8px;
+    border: none;
+    margin-top: 5px;
+
+    align-self: flex-start;
+
+    width: 125px;
+}
+
+#add-project:hover {
+    cursor: pointer;
+    
+    background-color: #aaa8a8bd;
+}
+
