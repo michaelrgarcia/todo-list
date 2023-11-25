@@ -14,100 +14,56 @@ body {
     background-color: #121212;
 }
 
-#content {
-    height: 100%;
-
-    display: grid;
-    grid-template-rows: 10vh 90vh;
-    grid-template-columns: 40vw 60vw;
-    align-content: center;
-}
-
 button {
     user-select: none;
 }
 
-header > *, 
-#task-filter,
-#add-project {
-    color: #8b8b8b;
+#content {
+    display: grid;
+    grid-row-start: 2;
+    grid-template-columns: 40vw 60vw;
+    grid-template-rows: 50px 100%;
+
+    align-content: flex-start;
+
 }
 
-header {
+#sidebar {
     display: flex;
-    justify-content: space-around;
-    grid-column: span 3;
-    
-    border-bottom: 1px solid rgba(255, 255, 255, 0.75);
-}
+    flex-direction: column;
+    justify-self: flex-end;
 
-header > *,
-#task-filter {
-    margin-top: 10px;
-    
-    color: #8b8b8b;
+    width: fit-content;
+
+    margin-top: 20px;
 }
 
 #logo {
     font-size: 3vh;
     font-weight: bold;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
     grid-column-start: 1;
-    
+    grid-row-start: 1;
 }
 
-#control-panel {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
-
-    margin-left: 10px;
+#task-filter,
+#add-project,
+#logo {
+    color: #8b8b8b;
 }
 
-#control-panel > span {
-    font-size: 1.5vh;
-    font-style: italic;
+#task-filter {
+    margin-top: 10px;
 }
 
-#control-panel button {
-    width: 25px;
-
-    border-radius: 30px;
-    border: none;
-
-    background-color: #717171;
-    color: #282828;
-
-    text-align: center;
-    font-size: 1em;
-    font-weight: bold;
-}
-
-#control-panel button:hover {
-    background-color: #aaa8a8bd;
-
-    cursor: pointer;
-}
-
-main {
-    display: grid;
+nav {
+    grid-column-start: 1;
     grid-row-start: 2;
-
-    margin-top: 30px;
-}
-
-#sidebar {
-    grid-column-start: 1;
 
     display: flex;
     flex-direction: column;
-    justify-self: center;
+    justify-content: flex-start;
     gap: 10px;
-
 }
 
 #task-filter {
@@ -126,6 +82,11 @@ main {
     text-decoration: underline;
 }
 
+#projects, 
+#project-settings {
+    color: #575757;
+}
+
 #projects {
     list-style-type: none;
 
@@ -135,8 +96,6 @@ main {
     gap: 13px;
 
     margin-top: 10px;
-
-    color: #575757;
 }
 
 #projects li {
@@ -193,5 +152,45 @@ main {
     cursor: pointer;
     
     background-color: #aaa8a8bd;
+}
+
+#tasks {
+    grid-column-start: 2;
+    grid-row-start: 2;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 60vw;
+}
+
+#project-settings {
+    font-weight: bold;
+    font-size: 2.8vh;
+    border-bottom: 1px solid #6b6b6b;
+
+    display: flex;
+    justify-content: space-between;
+
+    width: 50vw;
+}
+
+.config {
+    margin-right: 10px;
+    border: none;
+
+    align-self: center;
+
+    background: none;    
+    color: #7171715e;
+
+    font-size: 2.8vh;
+}
+
+.config:hover {
+    cursor: pointer;
+
+    color: #717171b6;
 }
 
