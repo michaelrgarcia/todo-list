@@ -8,19 +8,11 @@
 </head>
 <body>
     <div id="content">
-        <header>
+        <div id="sidebar">
             <div id="logo">
                 <p>To-Do List</p>
             </div>
-            <span id="control-panel">
-                <span>0 completed</span>
-                <button type="button">+</button>
-                <button type="button">?</button>
-                <button type="button">⚙</button>
-            </span>
-        </header>
-        <main>
-            <div id="sidebar">
+            <nav>
                 <ul id="task-filter">
                     <li>today</li>
                     <li>7 days</li>
@@ -28,9 +20,9 @@
                 </ul>
                 <ul id="projects">
                     <li>
-                            <div class="project-color"></div>
-                            <span class="task-num">0</span>
-                            <span class="project-name">Hello</span>
+                        <div class="project-color"></div>
+                        <span class="task-num">0</span>
+                        <span class="project-name">Hello</span>
                     </li>
                     <li>
                         <div class="project-color"></div>
@@ -39,8 +31,14 @@
                     </li>
                     <button type="button" id="add-project">Add project</button>
                 </ul>
+            </nav>
+        </div>
+        <div id="tasks">
+            <div id="project-settings">
+                <p id="project-title">Hello</p>
+                <button type="button" class="config">⚙</button>
             </div>
-        </main>
+        </div>
     </div>
     <script src="main.js"></script>
 </body>
