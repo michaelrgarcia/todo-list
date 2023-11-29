@@ -8,37 +8,66 @@
 </head>
 <body>
     <div id="content">
-        <div id="sidebar">
-            <div id="logo">
-                <p>To-Do List</p>
-            </div>
+        <header>
+            <img src="../svgs/format-list-bulleted-square.svg" class="svg">
+            <div id="header-text">To-Do List</div>
+            <img src="../svgs/information-variant-circle-outline.svg" class="svg">
+        </header>
+        <main>
             <nav>
-                <ul id="task-filter">
-                    <li>today</li>
-                    <li>7 days</li>
-                    <li>more</li>
-                </ul>
-                <ul id="projects">
-                    <li>
-                        <div class="project-color"></div>
-                        <span class="task-num">0</span>
-                        <span class="project-name">Hello</span>
-                    </li>
-                    <li>
-                        <div class="project-color"></div>
-                        <span class="task-num">1</span>
-                        <span class="project-name">HelloHellofsdfsfsssssssssssssssssssssss</span>
-                    </li>
+                <div id="filter-tasks">
+                    <p class="nav-header">Filter Tasks</p>
+                    <ul>
+                        <li>
+                            <img src="../svgs/archive.svg" class="svg">
+                            All Tasks
+                        </li>
+                        <li>
+                            <img src="../svgs/calendar.svg" class="svg">
+                            Today
+                        </li>
+                        <li>
+                            <img src="../svgs/calendar-arrow-right.svg" class="svg">
+                            7 Days
+                        </li>
+                        <li>
+                            <img src="../svgs/star.svg" class="svg">
+                            Starred
+                        </li>
+                        <li>
+                            <img src="../svgs/check-bold.svg" class="svg">
+                            Completed
+                        </li>
+                    </ul>
+                </div>
+                <div id="projects-menu">
+                    <p class="nav-header">Projects</p>
+                    <ul>
+                        <li>
+                            <img src="../svgs/format-list-bulleted-square.svg" class="svg">
+                            <p class="project-name">Example</p>
+                        </li>
+                    </ul>
                     <button type="button" id="add-project">Add project</button>
-                </ul>
+                </div>
             </nav>
-        </div>
-        <div id="tasks">
-            <div id="project-settings">
-                <p id="project-title">Hello</p>
-                <button type="button" class="config">⚙</button>
+            <div id="overview">
+                <p class="project-name">Example</p>
+                <ul id="tasks">
+                    <li>
+                        <div class="task">
+                            <div class="task-check"></div>
+                            <p class="task-name">test</p>
+                        </div>
+                        <div class="task-config">
+                            <img src="../svgs/message-text-outline.svg" class="svg">
+                            <img src="../svgs/star-outline.svg" class="svg">
+                            <img src="../svgs/cog-outline.svg" class="svg">
+                        </div>
+                    </li>
+                </ul>
             </div>
-        </div>
+        </main>
     </div>
     <script src="main.js"></script>
 </body>
