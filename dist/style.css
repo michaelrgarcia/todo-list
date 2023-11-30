@@ -17,6 +17,12 @@ body {
     flex-direction: column;
 }
 
+#content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
 header {
     background-color: #1f2937;
     color: #f9fafb;
@@ -54,9 +60,7 @@ nav div > ul > li:hover,
 
 main {
     display: flex;
-    flex-direction: row;
-
-    height: 92vh;
+    flex: 1;
 }
 
 nav {
