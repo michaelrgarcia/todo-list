@@ -146,6 +146,7 @@ nav div > ul > li img {
 
 #tasks {
     list-style-type: none;
+    overflow: auto;
 }
 
 #tasks li {
