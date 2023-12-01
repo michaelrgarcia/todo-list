@@ -1,1 +1,5 @@
-console.log("we can work it out stevie wonder");
+import header from "./createHeader";
+
+const content = document.getElementById("content");
+
+content.append(header);
