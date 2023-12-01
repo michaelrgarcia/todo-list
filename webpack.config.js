@@ -6,12 +6,5 @@ module.exports = {
         filename: "main.js",
         path: path.resolve(__dirname, "dist"),
     },
-    module: {
-        loaders: [
-            {
-                test: /\.svg$/,
-                loader: "file-loader"
-            }
-        ]
-    }
+    module: { },
 };
