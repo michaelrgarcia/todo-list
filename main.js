@@ -1,1 +1,1 @@
-console.log("we can work it out stevie wonder");
+(()=>{"use strict";const t=function(t){let e=document.createElement("img");return e.src=t,e.classList.add("svg"),e};const e=function(){const e=document.createElement("header"),n=t("../static/svgs/format-list-bulleted-square.svg"),s=document.createElement("p");s.id="header-text",s.textContent="To-Do List";const c=t("../static/svgs/information-variant-circle-outline.svg");return e.append(n,s,c),e}();document.getElementById("content").append(e)})();
