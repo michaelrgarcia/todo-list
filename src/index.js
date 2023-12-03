@@ -1,4 +1,4 @@
-import header from "./createHeader";
+import header from "./siteBuilder";
 
 const content = document.getElementById("content");
 
