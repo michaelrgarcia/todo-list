@@ -5,6 +5,9 @@ import icon4 from "./svgs/calendar.svg";
 import icon5 from "./svgs/calendar-arrow-right.svg";
 import icon6 from "./svgs/star.svg";
 import icon7 from "./svgs/check-bold.svg";
+import icon8 from "./svgs/message-text-outline.svg";
+import icon9 from "./svgs/star-outline.svg";
+import icon10 from "./svgs/cog-outline.svg";
 
 //solve this when you're done with mostly everything
 //ill probably represent the svgs folder as an array in sep. module
@@ -105,13 +108,64 @@ export function main() {
         projectsMenuList.append(tab);
     }
 
-    projectsMenu.append(projectsMenuHeader, projectsMenuList);
+    const addProject = document.createElement("button");
+    addProject.type = "button";
+    addProject.id = "add-project";
+    addProject.textContent = "Add project";
+
+    projectsMenu.append(projectsMenuHeader, projectsMenuList, addProject);
 
     //
 
     sidebar.append(filterTasks, projectsMenu);
 
-    mainElement.append(sidebar);
+    //Project/task view
+
+    const overview = document.createElement("div");
+    overview.id = "overview";
+    
+    const title = document.createElement("p");
+    title.textContent = projectName;
+    title.classList.add("project-name");
+
+    const tasks = document.createElement("ul");
+    tasks.id = "tasks";
+
+    let amountOfTasks = 1;
+    let taskName = "hdffgdg";
+
+    for (let i = 0; i < amountOfTasks; i++) {
+        let tab = document.createElement("li");
+
+        let taskInfo = document.createElement("div");
+        taskInfo.classList.add("task");
+
+        let checkbox = document.createElement("div");
+        checkbox.classList.add("task-check");
+
+        let taskTitle = document.createElement("p");
+        taskTitle.textContent = taskName;
+
+        taskInfo.append(checkbox, taskTitle);
+
+        let taskSettings = document.createElement("div");
+        taskSettings.classList.add("task-config");
+
+        let notes = elementCrafter.icon(icon8);
+        let star = elementCrafter.icon(icon9);
+        let other = elementCrafter.icon(icon10);
+
+        taskSettings.append(notes, star, other);
+
+        tab.append(taskInfo, taskSettings);
+        tasks.append(tab);
+    }
+
+    overview.append(title, tasks);
+
+    //
+
+    mainElement.append(sidebar, overview);
 
     return mainElement;
 }
