@@ -32,140 +32,148 @@ export function header() {
 
 export function main() {
     const mainElement = document.createElement("main");
-
-    const sidebar = document.createElement("nav");
-
-    //Filter Tasks
-
-    const filterTasks = document.createElement("div");
-    filterTasks.id = "filter-tasks";
-
-    const filterTasksHeader = document.createElement("p");
-    filterTasksHeader.classList.add("nav-header");
-    filterTasksHeader.textContent = "Filter Tasks";
-
-    const filterTasksList = document.createElement("ul");
-
-    for (let i = 0; i < 5; i++) {
-        let tab = document.createElement("li");
-        let tabText = document.createElement("p");
-
-        let path;
-
-        switch (i) {
-            case 0:
-                path = icon3;
-                tabText.textContent = "All Tasks";
-                break;
-            case 1:
-                path = icon4;
-                tabText.textContent = "Today";
-                break;
-            case 2: 
-                path = icon5;
-                tabText.textContent = "7 Days";
-                break;
-            case 3:
-                path = icon6;
-                tabText.textContent = "Starred";
-                break;
-            case 4:
-                path = icon7;
-                tabText.textContent = "Completed";
-        }
-
-        let tabIcon = elementCrafter.icon(path);
-
-        tab.append(tabIcon, tabText);
-        filterTasksList.append(tab);
-    }
-
-    filterTasks.append(filterTasksHeader, filterTasksList);
-
-    //
-
-    //Projects
-
-    const projectsMenu = document.createElement("div");
-    projectsMenu.id = "projects-menu";
-
-    const projectsMenuHeader = document.createElement("p");
-    projectsMenuHeader.classList.add("nav-header");
-    projectsMenuHeader.textContent = "Projects";
-
-    const projectsMenuList = document.createElement("ul");
-
     let amountOfProjects = 1;
-    let projectName = "placeholder";
-
-    for (let i = 0; i < amountOfProjects; i++) {
-        let tab = document.createElement("li");
-        let tabText = document.createElement("p");
-        tabText.textContent = projectName;
-        let tabIcon = elementCrafter.icon(icon1);
-
-        tab.append(tabIcon, tabText);
-        projectsMenuList.append(tab);
-    }
-
-    const addProject = document.createElement("button");
-    addProject.type = "button";
-    addProject.id = "add-project";
-    addProject.textContent = "Add project";
-
-    projectsMenu.append(projectsMenuHeader, projectsMenuList, addProject);
-
-    //
-
-    sidebar.append(filterTasks, projectsMenu);
-
-    //Project/task view
-
-    const overview = document.createElement("div");
-    overview.id = "overview";
-    
-    const title = document.createElement("p");
-    title.textContent = projectName;
-    title.classList.add("project-name");
-
-    const tasks = document.createElement("ul");
-    tasks.id = "tasks";
-
     let amountOfTasks = 1;
+    let projectName = "placeholder";
     let taskName = "hdffgdg";
 
-    for (let i = 0; i < amountOfTasks; i++) {
-        let tab = document.createElement("li");
+    function sidebar() {
+        const sidebar = document.createElement("nav");
 
-        let taskInfo = document.createElement("div");
-        taskInfo.classList.add("task");
+        function filterTasks() {
+            const filterTasks = document.createElement("div");
+            filterTasks.id = "filter-tasks";
+        
+            const filterTasksHeader = document.createElement("p");
+            filterTasksHeader.classList.add("nav-header");
+            filterTasksHeader.textContent = "Filter Tasks";
+        
+            const filterTasksList = document.createElement("ul");
+        
+            for (let i = 0; i < 5; i++) {
+                let tab = document.createElement("li");
+                let tabText = document.createElement("p");
+        
+                let path;
+        
+                switch (i) {
+                    case 0:
+                        path = icon3;
+                        tabText.textContent = "All Tasks";
+                        break;
+                    case 1:
+                        path = icon4;
+                        tabText.textContent = "Today";
+                        break;
+                    case 2: 
+                        path = icon5;
+                        tabText.textContent = "7 Days";
+                        break;
+                    case 3:
+                        path = icon6;
+                        tabText.textContent = "Starred";
+                        break;
+                    case 4:
+                        path = icon7;
+                        tabText.textContent = "Completed";
+                }
+        
+                let tabIcon = elementCrafter.icon(path);
+        
+                tab.append(tabIcon, tabText);
+                filterTasksList.append(tab);
+            }
+        
+            filterTasks.append(filterTasksHeader, filterTasksList);
+            
+            return filterTasks;
+        }
 
-        let checkbox = document.createElement("div");
-        checkbox.classList.add("task-check");
+        function projectsMenu() {
+            const projectsMenu = document.createElement("div");
+            projectsMenu.id = "projects-menu";
+        
+            const projectsMenuHeader = document.createElement("p");
+            projectsMenuHeader.classList.add("nav-header");
+            projectsMenuHeader.textContent = "Projects";
+        
+            const projectsMenuList = document.createElement("ul");
+        
+            for (let i = 0; i < amountOfProjects; i++) {
+                let tab = document.createElement("li");
 
-        let taskTitle = document.createElement("p");
-        taskTitle.textContent = taskName;
+                let tabText = document.createElement("p");
+                tabText.textContent = projectName;
 
-        taskInfo.append(checkbox, taskTitle);
+                let tabIcon = elementCrafter.icon(icon1);
+        
+                tab.append(tabIcon, tabText);
+                projectsMenuList.append(tab);
+            }
+        
+            const addProject = document.createElement("button");
+            addProject.type = "button";
+            addProject.id = "add-project";
+            addProject.textContent = "Add project";
+        
+            projectsMenu.append(projectsMenuHeader, projectsMenuList, addProject);
 
-        let taskSettings = document.createElement("div");
-        taskSettings.classList.add("task-config");
+            return projectsMenu;
+        }
+    
 
-        let notes = elementCrafter.icon(icon8);
-        let star = elementCrafter.icon(icon9);
-        let other = elementCrafter.icon(icon10);
 
-        taskSettings.append(notes, star, other);
+        //
+    
+        sidebar.append(filterTasks(), projectsMenu());
 
-        tab.append(taskInfo, taskSettings);
-        tasks.append(tab);
+        return sidebar;
     }
 
-    overview.append(title, tasks);
+    function overview() {
+        const overview = document.createElement("div");
+        overview.id = "overview";
+    
+        const title = document.createElement("p");
+        title.textContent = projectName;
+        title.classList.add("project-name");
 
-    //
+        const tasks = document.createElement("ul");
+        tasks.id = "tasks";
 
-    mainElement.append(sidebar, overview);
+        for (let i = 0; i < amountOfTasks; i++) {
+            let tab = document.createElement("li");
+
+            let taskInfo = document.createElement("div");
+            taskInfo.classList.add("task");
+
+            let checkbox = document.createElement("div");
+            checkbox.classList.add("task-check");
+
+            let taskTitle = document.createElement("p");
+            taskTitle.textContent = taskName;
+
+            taskInfo.append(checkbox, taskTitle);
+
+            let taskSettings = document.createElement("div");
+            taskSettings.classList.add("task-config");
+
+            let notes = elementCrafter.icon(icon8);
+            let star = elementCrafter.icon(icon9);
+            let other = elementCrafter.icon(icon10);
+
+            taskSettings.append(notes, star, other);
+
+            tab.append(taskInfo, taskSettings);
+            tasks.append(tab);
+        }
+
+        overview.append(title, tasks);
+
+        return overview;
+    }
+
+    mainElement.append(sidebar(), overview());
 
     return mainElement;
 }
