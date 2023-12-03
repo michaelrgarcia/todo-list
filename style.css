@@ -178,6 +178,10 @@ nav div > ul > li img {
     background-color: #f9fafb;
 }
 
+.task-check:hover {
+    background-color: rgba(255, 255, 255, 0.635)
+}
+
 .task-config {
     display: flex;
     gap: 8px;
