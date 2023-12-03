@@ -1,4 +1,4 @@
-function icon(path) {
+function iconModule(path) {
     const create = function(path) {
         let svg = document.createElement("img");
         svg.src = path;
@@ -10,4 +10,4 @@ function icon(path) {
     return { path, create };
 }
 
-export default icon();
+export default iconModule();
