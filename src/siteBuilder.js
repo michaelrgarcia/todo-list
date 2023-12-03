@@ -121,10 +121,6 @@ export function main() {
             return projectsMenu;
         }
     
-
-
-        //
-    
         sidebar.append(filterTasks(), projectsMenu());
 
         return sidebar;
