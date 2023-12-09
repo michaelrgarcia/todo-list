@@ -164,7 +164,12 @@ export function main() {
             tasks.append(tab);
         }
 
-        overview.append(title, tasks);
+        const addTask = document.createElement("button");
+        addTask.type = "button";
+        addTask.id = "add-task";
+        addTask.textContent = "Add task";
+
+        overview.append(title, tasks, addTask);
 
         return overview;
     }
