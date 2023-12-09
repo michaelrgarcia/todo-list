@@ -8,6 +8,7 @@ import icon7 from "./svgs/check-bold.svg";
 import icon8 from "./svgs/message-text-outline.svg";
 import icon9 from "./svgs/star-outline.svg";
 import icon10 from "./svgs/cog-outline.svg";
+import icon11 from "./svgs/close-circle.svg"
 
 //solve this when you're done with mostly everything
 //ill probably represent the svgs folder as an array in sep. module
@@ -175,6 +176,12 @@ export function main() {
     }
 
     mainElement.append(sidebar(), overview());
+
+    return mainElement;
+}
+
+export function dialog() {
+    const mainElement = document.createElement("dialog");
 
     return mainElement;
 }
