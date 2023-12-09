@@ -50,6 +50,7 @@ header > img {
 header > img:hover, 
 nav div > ul > li:hover,
 #add-project:hover,
+#add-task:hover,
 .task-config img:hover {
     background-color: #8282823a;
 
@@ -94,7 +95,8 @@ nav div > ul {
 }
 
 nav div > ul > li,
-#add-project {
+#add-project,
+#add-task {
     padding: 10px;
     color: #111827;
 }
@@ -132,7 +134,7 @@ nav div > ul > li img {
 
 #add-task {
     align-self: start;
-    margin-top: 20px;
+    margin-top: -5px;
 }
 
 #overview {
@@ -153,6 +155,7 @@ nav div > ul > li img {
 #tasks {
     list-style-type: none;
     overflow: auto;
+
 }
 
 #tasks li {
@@ -163,6 +166,7 @@ nav div > ul > li img {
     border: 1px solid #111827;
     border-radius: 5px;
     padding: 10px;
+    margin-bottom: 15px;
 }
 
 #tasks li:hover {
