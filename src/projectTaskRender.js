@@ -2,7 +2,7 @@ import { createProject, createTask } from "./projectTaskCreator";
 import elementCrafter from "./craftingTable";
 
 const projects = [];
-const domProjectName = document.querySelector(".project-name");
+const domProjectTitle = document.querySelector(".project-name");
 
 const test = createProject("hello", true);
 const test2 = createProject("testing", true);
