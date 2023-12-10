@@ -204,12 +204,27 @@ nav div > ul > li img {
     filter: invert(21%) sepia(33%) saturate(423%) hue-rotate(177deg) brightness(95%) contrast(86%);
 }
 
+dialog {
+    width: 400px;
+    height: 500px;
+
+    margin: auto auto;
+}
+
+dialog::backdrop {
+    background: #000000;
+    opacity: .4;
+}
+
 @media (max-width: 930px) {
     main {
         flex-direction: column;
     }
     nav {
         width: auto;
+    }
+    dialog {
+        width: calc(100% - 50px);
     }
 }
 
