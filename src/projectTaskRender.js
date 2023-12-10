@@ -5,13 +5,18 @@ const projects = [];
 const domProjectName = document.querySelector(".project-name");
 
 const test = createProject("hello", true);
+const test2 = createProject("testing", true);
 const testTask = createTask("imtest", "hello", "im a test task", "12/23/23", false);
 test.tasks.push(testTask);
-projects.push(test);
+projects.push(test, test2);
 
 function updateProjects() {
-    const projectsDomMenu = document.getElementById("projects-menu");
+    const projectsDomMenu = document.querySelector("#projects-menu > ul");
+    if (projectsDomMenu) projectsDomMenu.replaceChildren();
 
+    projects.forEach((project) => {
+        elementCrafter.domProject(project.title);
+    });
 }
 
 function updateTasks() {
