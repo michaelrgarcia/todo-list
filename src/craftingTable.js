@@ -12,7 +12,7 @@ function iconCreator(path) {
 }
 
 function domProjectCreator(title) {
-    const projectsMenu = document.getElementById("projects-menu");
+    const projectsMenu = document.querySelector("#projects-menu > ul");
     let project = document.createElement("li");
 
     let projectTitle = document.createElement("p");
