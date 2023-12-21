@@ -216,6 +216,26 @@ dialog::backdrop {
     opacity: .4;
 }
 
+.dialog-heading {
+    display: grid;
+    grid-template-columns: 4fr 0fr;
+    align-items: center;
+
+    padding: 7px;
+}
+
+.dialog-heading > p {
+    justify-self: center;
+
+    font-size: 1.7em;
+}
+
+.close-dialog {
+    align-self: start;
+
+    width: 35px;
+}
+
 @media (max-width: 930px) {
     main {
         flex-direction: column;
