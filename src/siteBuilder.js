@@ -185,3 +185,24 @@ export function dialog() {
 
     return mainElement;
 }
+
+export function addTaskPrompt() {
+    const dialogElement = document.querySelector("dialog");
+    dialogElement.replaceChildren();
+
+    const heading = document.createElement("div");
+    heading.classList.add("dialog-heading");
+
+    const headText = document.createElement("p");
+    headText.textContent = "Add Task";
+
+    const closeButton = elementCrafter.icon(icon11);
+    closeButton.classList.add("close-dialog");
+
+    heading.append(headText, closeButton);
+
+    const taskForm = document.createElement("form");
+    taskForm.method = "dialog";
+    
+    dialogElement.append(heading, taskForm);
+}
