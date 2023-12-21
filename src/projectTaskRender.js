@@ -22,7 +22,11 @@ function updateProjects() {
 function updateTasks() {
     const tasks = document.getElementById("tasks");
     if (tasks) tasks.replaceChildren();
-    //projects.forEach((proje))
+    projects.forEach((project) => {
+        project.tasks.forEach((task) => {
+            elementCrafter.domTask(task.title);
+        });
+    });
 }
 
 export function displayDefault() {
