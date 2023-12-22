@@ -219,6 +219,7 @@ export function addTaskPrompt() {
     const formElement = document.querySelector("form > ul");
 
     const taskTitle = elementCrafter.textField("Title:", "task-title");
+    const taskDetails = elementCrafter.textAreaField("Details:", "task-details");
 
-    formElement.append(taskTitle);
+    formElement.append(taskTitle, taskDetails);
 }
