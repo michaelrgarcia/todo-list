@@ -15,6 +15,14 @@ import icon11 from "./svgs/close-circle.svg"
 
 import elementCrafter from "./craftingTable";
 
+function clearFormChangeTitle(newTitle) {
+    const formElement = document.querySelector("form > ul");
+    const title = document.querySelector(".dialog-heading > p ");
+
+    title.textContent = newTitle;
+    formElement.replaceChildren();
+}
+
 export function header() {
     const mainElement = document.createElement("header");
 
@@ -183,26 +191,34 @@ export function main() {
 export function dialog() {
     const mainElement = document.createElement("dialog");
 
-    return mainElement;
-}
-
-export function addTaskPrompt() {
-    const dialogElement = document.querySelector("dialog");
-    dialogElement.replaceChildren();
-
     const heading = document.createElement("div");
     heading.classList.add("dialog-heading");
 
     const headText = document.createElement("p");
-    headText.textContent = "Add Task";
+    headText.textContent = "placeholder";
 
     const closeButton = elementCrafter.icon(icon11);
     closeButton.classList.add("close-dialog");
 
     heading.append(headText, closeButton);
 
-    const taskForm = document.createElement("form");
-    taskForm.method = "dialog";
-    
-    dialogElement.append(heading, taskForm);
+    const dialogForm = document.createElement("form");
+    dialogForm.method = "dialog";
+
+    const formUl = document.createElement("ul");
+
+    dialogForm.append(formUl);
+
+    mainElement.append(heading, dialogForm);
+
+    return mainElement;
+}
+
+export function addTaskPrompt() {
+    clearFormChangeTitle("Add Task");
+    const formElement = document.querySelector("form > ul");
+
+    const taskTitle = elementCrafter.textField("Title:", "task-title");
+
+    formElement.append(taskTitle);
 }
