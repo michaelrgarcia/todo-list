@@ -223,7 +223,7 @@ export function addTaskPrompt() {
     const taskDueDate = elementCrafter.dateField("Due:", "task-due");
 
     const submitButton = document.createElement("button");
-    submitButton.type = "button";
+    submitButton.type = "submit";
     submitButton.classList.add("submit-task");
     submitButton.textContent = "Done";
 
