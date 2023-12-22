@@ -238,6 +238,37 @@ dialog::backdrop {
     cursor: pointer;
 }
 
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form > ul {
+    list-style-type: none;
+    padding: 20px;
+    margin-top: -8px;
+}
+
+form > ul > li {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    overflow: auto;
+    font-size: 1.2em;
+}
+
+input {
+    padding: 5px;
+    width: 100%;
+    font-size: .8em;
+}
+
+label {
+    text-align: left;
+    margin-right: 10px;
+    width: 75px;
+}
+
 @media (max-width: 930px) {
     main {
         flex-direction: column;
