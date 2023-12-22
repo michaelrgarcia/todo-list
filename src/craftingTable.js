@@ -62,7 +62,7 @@ function textInput(labelText, givenId) {
     const label = document.createElement("label")
     label.htmlFor = givenId;
     label.textContent = labelText;
-    label.style.alignSelf = "center"
+    label.style.alignSelf = "center";
 
     const input = document.createElement("input");
     input.id = givenId;
@@ -95,6 +95,25 @@ function bigTextArea(labelText, givenId) {
     return mainElement;
 }
 
+function dueDateField(labelText, givenId) {
+    const mainElement = document.createElement("li");
+
+    const label = document.createElement("label");
+    label.htmlFor = givenId;
+    label.textContent = labelText;
+    label.style.alignSelf = "center"
+    label.style.marginRight = "-15px";
+
+    const input = document.createElement("input");
+    input.id = givenId;
+    input.name = givenId;
+    input.type = "date";
+
+    mainElement.append(label, input);
+
+    return mainElement;
+}
+
 function elementCrafter(param1, param2, param3) {
     const icon = function(param1) {
         let craftedIcon = iconCreator(param1);
@@ -121,7 +140,12 @@ function elementCrafter(param1, param2, param3) {
         return newTextAreaField;
     }
 
-    return { param1, param2, icon, domProject, domTask, textField, textAreaField };
+    const dateField = function(param1, param2) {
+        let newDateField = dueDateField(param1, param2);
+        return newDateField;
+    }
+
+    return { param1, param2, icon, domProject, domTask, textField, textAreaField, dateField };
 }
 
 export default elementCrafter();
