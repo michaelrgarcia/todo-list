@@ -2,6 +2,7 @@ import icon1 from "./svgs/format-list-bulleted-square.svg";
 import icon8 from "./svgs/message-text-outline.svg";
 import icon9 from "./svgs/star-outline.svg";
 import icon10 from "./svgs/cog-outline.svg";
+import { dialog } from "./siteBuilder";
 
 function iconCreator(path) {
     let svg = document.createElement("img");
@@ -55,6 +56,30 @@ function domTaskCreator(title) {
     //maybe in its own dialog form
 }
 
+function textInput(labelText, givenId) {
+    const mainElement = document.createElement("li");
+
+    const label = document.createElement("label")
+    label.for = givenId;
+    label.textContent = labelText;
+
+    const input = document.createElement("input");
+    input.id = givenId;
+    input.type = "text";
+    input.name = givenId;
+    input.required = true;
+
+    mainElement.append(label, input);
+
+    return mainElement;
+}
+
+function bigTextArea(labelText, givenId) {
+    const mainElement = document.createElement("li");
+    mainElement.style.display = "flex";
+    mainElement.style.flexDirection = "column";
+}
+
 function elementCrafter(param1, param2, param3) {
     const icon = function(param1) {
         let craftedIcon = iconCreator(param1);
@@ -71,7 +96,12 @@ function elementCrafter(param1, param2, param3) {
         return craftedTask;
     }
 
-    return { param1, icon, domProject, domTask };
+    const textField = function(param1, param2) {
+        let newTextField = textInput(param1, param2);
+        return newTextField;
+    }
+
+    return { param1, icon, domProject, domTask, textField };
 }
 
 export default elementCrafter();
