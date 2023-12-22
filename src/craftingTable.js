@@ -60,8 +60,9 @@ function textInput(labelText, givenId) {
     const mainElement = document.createElement("li");
 
     const label = document.createElement("label")
-    label.for = givenId;
+    label.htmlFor = givenId;
     label.textContent = labelText;
+    label.style.alignSelf = "center"
 
     const input = document.createElement("input");
     input.id = givenId;
@@ -76,8 +77,22 @@ function textInput(labelText, givenId) {
 
 function bigTextArea(labelText, givenId) {
     const mainElement = document.createElement("li");
-    mainElement.style.display = "flex";
     mainElement.style.flexDirection = "column";
+
+    const label = document.createElement("label");
+    label.htmlFor = givenId;
+    label.textContent = labelText;
+
+    const textarea = document.createElement("textarea");
+    textarea.id = givenId;
+    textarea.name = givenId;
+    textarea.rows = "10";
+    textarea.cols = "20";
+    textarea.placeholder = "Type some notes or a description here";
+
+    mainElement.append(label, textarea);
+
+    return mainElement;
 }
 
 function elementCrafter(param1, param2, param3) {
@@ -101,7 +116,12 @@ function elementCrafter(param1, param2, param3) {
         return newTextField;
     }
 
-    return { param1, icon, domProject, domTask, textField };
+    const textAreaField = function(param1, param2) {
+        let newTextAreaField = bigTextArea(param1, param2);
+        return newTextAreaField;
+    }
+
+    return { param1, param2, icon, domProject, domTask, textField, textAreaField };
 }
 
 export default elementCrafter();
