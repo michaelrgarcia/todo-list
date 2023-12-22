@@ -252,9 +252,9 @@ form > ul {
 form > ul > li {
     display: flex;
     justify-content: flex-start;
-    align-items: center;
     overflow: auto;
     font-size: 1.2em;
+    margin-bottom: 20px;
 }
 
 input {
@@ -267,6 +267,11 @@ label {
     text-align: left;
     margin-right: 10px;
     width: 75px;
+}
+
+textarea {
+    resize: none;
+    padding: 10px;
 }
 
 @media (max-width: 930px) {
