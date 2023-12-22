@@ -263,6 +263,10 @@ input {
     font-size: .8em;
 }
 
+input[type="date"] {
+    width: 80%;
+}
+
 label {
     text-align: left;
     margin-right: 10px;
