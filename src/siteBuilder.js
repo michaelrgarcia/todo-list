@@ -222,5 +222,10 @@ export function addTaskPrompt() {
     const taskDetails = elementCrafter.textAreaField("Details:", "task-details");
     const taskDueDate = elementCrafter.dateField("Due:", "task-due");
 
-    formElement.append(taskTitle, taskDetails, taskDueDate);
+    const submitButton = document.createElement("button");
+    submitButton.type = "button";
+    submitButton.classList.add("submit-task");
+    submitButton.textContent = "Done";
+
+    formElement.append(taskTitle, taskDetails, taskDueDate, submitButton);
 }
