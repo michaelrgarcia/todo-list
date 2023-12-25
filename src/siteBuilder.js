@@ -229,3 +229,17 @@ export function addTaskPrompt() {
 
     formElement.append(taskTitle, taskDetails, taskDueDate, submitButton);
 }
+
+export function addProjectPrompt() {
+    clearFormChangeTitle("Add Project");
+    const formElement = document.querySelector("form > ul");
+
+    const projectTitle = elementCrafter.textField("Title:", "project-title");
+
+    const submitButton = document.createElement("button");
+    submitButton.type = "submit";
+    submitButton.classList.add("submit-project");
+    submitButton.textContent = "Done";
+
+    formElement.append(projectTitle, submitButton);
+}
