@@ -9,10 +9,10 @@ selectProject(0); //selects "All Tasks" project
 window.addEventListener("click", function(event) {
     const dialogSelector = document.querySelector("dialog");
 
-    if (event.target.className === "all-tasks") {
+    if (event.target.className === "all-tasks" || event.target.parentNode.className === "all-tasks") {
         selectProject(0);
     }
-    if (event.target.dataset.pnum) {
+    if (event.target.dataset.pnum || event.target.parentNode.dataset.pnum) {
         selectProject(event.target.dataset.pnum);
     }
     if (event.target.id === "add-task") {
