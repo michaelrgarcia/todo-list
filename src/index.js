@@ -1,10 +1,10 @@
 import { header, main, dialog, addTaskPrompt, addProjectPrompt } from "./siteBuilder.js";
-import { displayDefault, updateProjects, updateTasks, domCreateTask, selectProject, domCreateProject } from "./projectTaskRender.js";
+import { updateProjects, updateTasks, domCreateTask, selectProject, domCreateProject } from "./projectTaskRender.js";
 
 const content = document.getElementById("content");
 content.append(header(), main(), dialog());
 
-displayDefault();
+selectProject(0); //selects "All Tasks" project
 
 window.addEventListener("click", function(event) {
     const dialogSelector = document.querySelector("dialog");
@@ -16,12 +16,12 @@ window.addEventListener("click", function(event) {
         dialogSelector.showModal();
         addTaskPrompt();
     }
-    if (event.target.className === "submit-task") {
-        domCreateTask();
-    }
     if (event.target.id === "add-project") {
         dialogSelector.showModal();
         addProjectPrompt();
+    }
+    if (event.target.className === "submit-task") {
+        domCreateTask();
     }
     if (event.target.className === "submit-project") {
         domCreateProject();
