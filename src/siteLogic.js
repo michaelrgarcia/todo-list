@@ -1,7 +1,7 @@
-export function createProject(title, isDefault, selected) {
+export function createProject(title, selected) {
     let tasks = [];
 
-    return { title, isDefault, selected, tasks };
+    return { title, selected, tasks };
 }
 
 export function createTask(title, description, notes, dueDate, starred) {
