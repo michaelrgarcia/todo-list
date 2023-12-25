@@ -4,7 +4,7 @@ import elementCrafter from "./craftingTable";
 const projects = [];
 const domProjectTitle = document.querySelector(".project-name");
 
-const test = createProject("hello", true);
+const test = createProject("hello", true, true);
 const test2 = createProject("testing", true);
 const testTask = createTask("imtest", "hello", "im a test task", "12/23/23", false);
 test.tasks.push(testTask);
@@ -14,8 +14,8 @@ function updateProjects() {
     const projectsDomMenu = document.querySelector("#projects-menu > ul");
     if (projectsDomMenu) projectsDomMenu.replaceChildren();
 
-    projects.forEach((project) => {
-        elementCrafter.domProject(project.title);
+    projects.forEach((project, index) => {
+        elementCrafter.domProject(project.title, index);
     });
 }
 
@@ -49,6 +49,37 @@ export function displayDefault() {
 export function updateScreen() {
     updateProjects();
     updateTasks();
+}
+
+export function domCreateTask() {
+    const title = document.getElementById("task-title");
+    const details = document.getElementById("task-details");
+    const due = document.getElementById("task-due");
+
+    const selectedProject = projects.find((project) => project.selected === true);
+
+    const dialogForm = document.querySelector("dialog");
+
+    if (title.value !== "") {
+        const newTask = createTask(title.value, details.value, "", due.value, false);
+        selectedProject.tasks.push(newTask);
+        dialogForm.close();
+        updateScreen();
+    }
+}
+
+export function domCreateProject() {
+    const title = document.getElementById("project-title");
+
+    const dialogForm = document.querySelector("dialog");
+
+    if (title.value !== "") {
+        const newProject = createProject(title.value, false, false);
+    }
+}
+
+export function selectProject(project) {
+
 }
 
 
