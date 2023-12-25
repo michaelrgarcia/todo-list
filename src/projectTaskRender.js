@@ -5,12 +5,7 @@ const projects = [];
 
 const allTaskProject = createProject("All Tasks", true);
 
-const test2 = createProject("testing", false);
-const testTask = createTask("imtest", "hello", "im a test task", "12/23/23", false);
-
-allTaskProject.tasks.push(testTask);
-
-projects.push(allTaskProject, test2);
+projects.push(allTaskProject);
 
 export function updateProjects() {
     const projectsDomMenu = document.querySelector("#projects-menu > ul");
@@ -32,23 +27,6 @@ export function updateTasks(project) {
     });
 }
 
-export function displayDefault() {
-    const checkElement = async selector => {
-        while ( document.querySelector(selector) === null) {
-            await new Promise( resolve => requestAnimationFrame(resolve) )
-        }
-        return document.querySelector(selector);
-    }
-
-    projects.forEach((project) => {
-        if (project.isDefault) {
-            checkElement(".project-name").then((selector) => {
-                selector.textContent = "hi";
-            });
-        } 
-    });
-}
-
 export function domCreateTask() {
     const title = document.getElementById("task-title");
     const details = document.getElementById("task-details");
@@ -61,6 +39,8 @@ export function domCreateTask() {
     if (title.value !== "") {
         const newTask = createTask(title.value, details.value, "", due.value, false);
         selectedProject.tasks.push(newTask);
+        allTaskProject.tasks.push(newTask);
+        //add little grey text specifying which project the task is from
         dialogForm.close();
         updateTasks(selectedProject);
     }
