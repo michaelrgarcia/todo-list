@@ -279,7 +279,8 @@ textarea {
     padding: 10px;
 }
 
-.submit-task {
+.submit-task,
+.submit-project {
     padding: 10px;
     margin-top: 10px;
 
@@ -293,6 +294,11 @@ textarea {
 
     cursor: pointer;
 }
+
+.submit-project {
+    margin-top: 275px;
+}
+
 
 @media (max-width: 930px) {
     main {
