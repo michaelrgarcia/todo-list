@@ -1,4 +1,4 @@
-import { createProject, createTask } from "./projectTaskCreator";
+import { createProject, createTask } from "./siteLogic";
 import elementCrafter from "./craftingTable";
 
 const projects = [];
@@ -27,21 +27,6 @@ function updateTasks() {
             elementCrafter.domTask(task.title);
         });
     });
-}
-
-export function domCreateTask() {
-    const title = document.getElementById("task-title");
-    const details = document.getElementById("task-details");
-    const due = document.getElementById("task-due");
-    
-    const dialogForm = document.querySelector("dialog");
-
-    if (title.value !== "") {
-        const newTask = createTask(title.value, details.value, "", due.value, false);
-        test.tasks.push(newTask);
-        dialogForm.close();
-        updateScreen();
-    }
 }
 
 export function displayDefault() {
