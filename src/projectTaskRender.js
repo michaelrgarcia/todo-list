@@ -3,18 +3,23 @@ import elementCrafter from "./craftingTable";
 
 const projects = [];
 
-const test = createProject("hello", true, true);
-const test2 = createProject("testing", true, false);
+const allTaskProject = createProject("All Tasks", true);
+
+const test2 = createProject("testing", false);
 const testTask = createTask("imtest", "hello", "im a test task", "12/23/23", false);
-test.tasks.push(testTask);
-projects.push(test, test2);
+
+allTaskProject.tasks.push(testTask);
+
+projects.push(allTaskProject, test2);
 
 export function updateProjects() {
     const projectsDomMenu = document.querySelector("#projects-menu > ul");
-    if (projectsDomMenu) projectsDomMenu.replaceChildren();
+    projectsDomMenu.replaceChildren();
 
     projects.forEach((project, index) => {
-        elementCrafter.domProject(project.title, index);
+        if (index > 0) {
+            elementCrafter.domProject(project.title, index);
+        }
     });
 }
 
@@ -67,7 +72,10 @@ export function domCreateProject() {
     const dialogForm = document.querySelector("dialog");
 
     if (title.value !== "") {
-        const newProject = createProject(title.value, false, false);
+        const newProject = createProject(title.value, false);
+        projects.push(newProject);
+        dialogForm.close();
+        updateProjects();
     }
 }
 
