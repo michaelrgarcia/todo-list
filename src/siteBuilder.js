@@ -41,10 +41,6 @@ export function header() {
 
 export function main() {
     const mainElement = document.createElement("main");
-    let amountOfProjects = 1;
-    let amountOfTasks = 1;
-    let projectName = "placeholder";
-    let taskName = "hdffgdg";
 
     function sidebar() {
         const sidebar = document.createElement("nav");
@@ -108,18 +104,6 @@ export function main() {
         
             const projectsMenuList = document.createElement("ul");
         
-            for (let i = 0; i < amountOfProjects; i++) {
-                let tab = document.createElement("li");
-
-                let tabText = document.createElement("p");
-                tabText.textContent = projectName;
-
-                let tabIcon = elementCrafter.icon(icon1);
-        
-                tab.append(tabIcon, tabText);
-                projectsMenuList.append(tab);
-            }
-        
             const addProject = document.createElement("button");
             addProject.type = "button";
             addProject.id = "add-project";
@@ -140,38 +124,11 @@ export function main() {
         overview.id = "overview";
     
         const title = document.createElement("p");
-        title.textContent = projectName;
+        title.textContent = "PLACEHOLDER";
         title.classList.add("project-name");
 
         const tasks = document.createElement("ul");
         tasks.id = "tasks";
-
-        for (let i = 0; i < amountOfTasks; i++) {
-            let tab = document.createElement("li");
-
-            let taskInfo = document.createElement("div");
-            taskInfo.classList.add("task");
-
-            let checkbox = document.createElement("div");
-            checkbox.classList.add("task-check");
-
-            let taskTitle = document.createElement("p");
-            taskTitle.textContent = taskName;
-
-            taskInfo.append(checkbox, taskTitle);
-
-            let taskSettings = document.createElement("div");
-            taskSettings.classList.add("task-config");
-
-            let notes = elementCrafter.icon(icon8);
-            let star = elementCrafter.icon(icon9);
-            let other = elementCrafter.icon(icon10);
-
-            taskSettings.append(notes, star, other);
-
-            tab.append(taskInfo, taskSettings);
-            tasks.append(tab);
-        }
 
         const addTask = document.createElement("button");
         addTask.type = "button";
