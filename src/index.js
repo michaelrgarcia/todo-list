@@ -1,5 +1,6 @@
 import { header, main, dialog, addTaskPrompt } from "./siteBuilder.js";
-import { displayDefault, updateScreen, domCreateTask } from "./projectTaskRender.js";
+import { displayDefault, updateScreen } from "./projectTaskRender.js";
+import { domCreateTask } from "./domLogic.js";
 
 const content = document.getElementById("content");
 content.append(header(), main(), dialog());
