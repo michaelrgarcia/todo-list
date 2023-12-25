@@ -1,5 +1,5 @@
 import { header, main, dialog, addTaskPrompt, addProjectPrompt } from "./siteBuilder.js";
-import { displayDefault, updateProjects, updateTasks, domCreateTask, selectProject } from "./projectTaskRender.js";
+import { displayDefault, updateProjects, updateTasks, domCreateTask, selectProject, domCreateProject } from "./projectTaskRender.js";
 
 const content = document.getElementById("content");
 content.append(header(), main(), dialog());
@@ -24,7 +24,7 @@ window.addEventListener("click", function(event) {
         addProjectPrompt();
     }
     if (event.target.className === "submit-project") {
-
+        domCreateProject();
     }
     if (event.target.className === "svg close-dialog") {
         dialogSelector.close();
