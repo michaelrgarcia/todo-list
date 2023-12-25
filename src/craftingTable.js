@@ -12,9 +12,10 @@ function iconCreator(path) {
     return svg;
 }
 
-function domProjectCreator(title) {
+function domProjectCreator(title, index) {
     const projectsMenu = document.querySelector("#projects-menu > ul");
     let project = document.createElement("li");
+    project.setAttribute("data-pnum", index);
 
     let projectTitle = document.createElement("p");
     projectTitle.textContent = title;
@@ -120,8 +121,8 @@ function elementCrafter(param1, param2, param3) {
         return craftedIcon;
     }
 
-    const domProject = function(param1) {
-        let craftedProject = domProjectCreator(param1);
+    const domProject = function(param1, param2) {
+        let craftedProject = domProjectCreator(param1, param2);
         return craftedProject;
     }
 
