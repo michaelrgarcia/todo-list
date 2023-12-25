@@ -60,12 +60,19 @@ export function domCreateProject() {
 }
 
 export function selectProject(projectNum) {
+    const addTaskBtn = document.getElementById("add-task");
     const domProjectTitle = document.querySelector(".project-name");
     let projectToSelect = projects[projectNum];
 
+    if (projectNum === 0) {
+        addTaskBtn.style.display = "none";
+    } else {
+        addTaskBtn.style.display = "block";
+    }
+
     projects.forEach((project) => {
         project.selected = false;
-    })
+    });
 
     projectToSelect.selected = true;
 
