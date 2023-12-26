@@ -39,7 +39,11 @@ function domTaskCreator(title) {
     let taskTitle = document.createElement("p");
     taskTitle.textContent = title;
 
-    taskInfo.append(checkbox, taskTitle);
+    let parentProject = document.createElement("p");
+    parentProject.classList.add("parent-project-name");
+    parentProject.textContent = "";
+
+    taskInfo.append(checkbox, taskTitle, parentProject);
 
     let taskSettings = document.createElement("div");
     taskSettings.classList.add("task-config");
