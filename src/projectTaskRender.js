@@ -23,7 +23,7 @@ export function updateTasks(project) {
     tasksMenu.replaceChildren();
 
     project.tasks.forEach((task) => {
-        elementCrafter.domTask(task.title);
+        elementCrafter.domTask(task.title, project.title);
     });
 }
 
@@ -71,10 +71,12 @@ export function selectProject(projectNum) {
     }
 
     projects.forEach((project) => {
-        project.selected = false;
-    });
-
-    projectToSelect.selected = true;
+        if (projectToSelect && project.title !== projectToSelect.title) {
+            project.selected = false;
+        } else {
+            project.selected = true;
+        }
+    })
 
     domProjectTitle.textContent = projectToSelect.title;
 
