@@ -41,7 +41,7 @@ function domTaskCreator(title, projectName, projectSwitchName) {
 
     let parentProject = document.createElement("p");
     parentProject.classList.add("parent-project-name");
-    parentProject.textContent = projectName;
+    parentProject.textContent = `(${projectName})`;
 
     if (projectSwitchName === "All Tasks") {
         parentProject.style.display = "block";
