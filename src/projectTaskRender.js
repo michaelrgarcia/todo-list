@@ -23,7 +23,7 @@ export function updateTasks(project) {
     tasksMenu.replaceChildren();
 
     project.tasks.forEach((task) => {
-        elementCrafter.domTask(task.title, project.title);
+        elementCrafter.domTask(task.title, task.parentProject, project.title);
     });
 }
 
@@ -37,10 +37,9 @@ export function domCreateTask() {
     const dialogForm = document.querySelector("dialog");
 
     if (title.value !== "") {
-        const newTask = createTask(title.value, details.value, "", due.value, false);
+        const newTask = createTask(title.value, details.value, "", due.value, false, selectedProject.title);
         selectedProject.tasks.push(newTask);
         allTaskProject.tasks.push(newTask);
-        //add little grey text specifying which project the task is from
         dialogForm.close();
         updateTasks(selectedProject);
     }
@@ -59,27 +58,32 @@ export function domCreateProject() {
     }
 }
 
-export function selectProject(projectNum) {
+function domProjectSwitch(project) {
     const addTaskBtn = document.getElementById("add-task");
     const domProjectTitle = document.querySelector(".project-name");
-    let projectToSelect = projects[projectNum];
 
-    if (projectNum === 0) {
+    if (project === projects[0]) {
         addTaskBtn.style.display = "none";
     } else {
         addTaskBtn.style.display = "block";
     }
 
+    domProjectTitle.textContent = project.title;
+}
+
+export function selectProject(projectNum) {
+    let projectToSelect = projects[projectNum];
+
     projects.forEach((project) => {
-        if (projectToSelect && project.title !== projectToSelect.title) {
+        if (project.title !== projectToSelect.title) {
             project.selected = false;
         } else {
             project.selected = true;
         }
-    })
+    });
 
-    domProjectTitle.textContent = projectToSelect.title;
-
+    domProjectSwitch(projectToSelect);
+    
     updateTasks(projectToSelect);
 }
 
