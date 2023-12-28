@@ -26,7 +26,7 @@ function domProjectCreator(title, index) {
     projectsMenu.append(project);
 }
 
-function domTaskCreator(title) {
+function domTaskCreator(title, projectName, projectSwitchName) {
     const taskMenu = document.getElementById("tasks");
     let task = document.createElement("li");
 
@@ -41,7 +41,13 @@ function domTaskCreator(title) {
 
     let parentProject = document.createElement("p");
     parentProject.classList.add("parent-project-name");
-    parentProject.textContent = "";
+    parentProject.textContent = projectName;
+
+    if (projectSwitchName === "All Tasks") {
+        parentProject.style.display = "block";
+    } else {
+        parentProject.style.display = "none";
+    }
 
     taskInfo.append(checkbox, taskTitle, parentProject);
 
@@ -130,8 +136,8 @@ function elementCrafter(param1, param2, param3) {
         return craftedProject;
     }
 
-    const domTask = function(param1) {
-        let craftedTask = domTaskCreator(param1);
+    const domTask = function(param1, param2, param3) {
+        let craftedTask = domTaskCreator(param1, param2, param3);
         return craftedTask;
     }
 
@@ -150,7 +156,7 @@ function elementCrafter(param1, param2, param3) {
         return newDateField;
     }
 
-    return { param1, param2, icon, domProject, domTask, textField, textAreaField, dateField };
+    return { param1, param2, param3, icon, domProject, domTask, textField, textAreaField, dateField };
 }
 
 export default elementCrafter();
