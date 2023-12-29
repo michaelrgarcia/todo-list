@@ -55,8 +55,11 @@ function domTaskCreator(title, projectName, projectSwitchName) {
     taskSettings.classList.add("task-config");
 
     let notes = iconCreator(icon8);
+    notes.classList.add("notes");
     let star = iconCreator(icon9);
+    star.classList.add("star");
     let other = iconCreator(icon10);
+    other.classList.add("other");
 
     taskSettings.append(notes, star, other);
 
