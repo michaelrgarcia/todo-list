@@ -35,8 +35,9 @@ export function updateTasks(project) {
     const tasksMenu = document.getElementById("tasks");
     tasksMenu.replaceChildren();
 
-    project.tasks.forEach((task) => {
-        elementCrafter.domTask(task.title, task.parentProject, project.title);
+    project.tasks.forEach((task, index) => {
+        task.number = index;
+        elementCrafter.domTask(task.title, task.parentProject, project.title, index);
     });
 }
 
@@ -50,7 +51,7 @@ export function domCreateTask() {
     const dialogForm = document.querySelector("dialog");
 
     if (title.value !== "") {
-        const newTask = createTask(title.value, details.value, "", due.value, false, selectedProject.title);
+        const newTask = createTask(title.value, details.value, due.value, false, selectedProject.title);
         selectedProject.tasks.push(newTask);
         allTaskProject.tasks.push(newTask);
         dialogForm.close();
@@ -85,6 +86,18 @@ export function selectProject(projectNum) {
     domProjectSwitch(projectToSelect);
     
     updateTasks(projectToSelect);
+}
+
+export function displayDetails(taskNum) {
+    const domTaskDetails = document.getElementById("task-details");
+
+    projects.forEach((project) => {
+        project.tasks.forEach((task) => {
+            if (task.number == taskNum) {
+                domTaskDetails.textContent = task.details;
+            }
+        })
+    })
 }
 
 
