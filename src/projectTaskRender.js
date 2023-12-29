@@ -90,14 +90,35 @@ export function selectProject(projectNum) {
 
 export function displayDetails(taskNum) {
     const domTaskDetails = document.getElementById("task-details");
+    const dialogForm = document.querySelector("dialog");
+
+    dialogForm.setAttribute("data-tnum", taskNum);
 
     projects.forEach((project) => {
         project.tasks.forEach((task) => {
             if (task.number == taskNum) {
                 domTaskDetails.textContent = task.details;
             }
-        })
-    })
+        });
+    });
+}
+
+export function submitDetails() {
+    if (confirm("Are you sure?") == true) {
+        const dialogForm = document.querySelector("dialog");
+        const taskNum = dialogForm.dataset.tnum;
+        const domTaskDetails = document.getElementById("task-details");
+    
+        projects.forEach((project) => {
+            project.tasks.forEach((task) => {
+                if (task.number == taskNum) {
+                    task.details = domTaskDetails.value;
+                }
+            });
+        });
+    
+        dialogForm.close();
+    }
 }
 
 
