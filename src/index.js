@@ -1,5 +1,5 @@
 import { header, main, dialog, addTaskPrompt, addProjectPrompt, detailsPrompt } from "./siteBuilder.js";
-import { updateProjects, updateTasks, domCreateTask, selectProject, domCreateProject, displayDetails } from "./projectTaskRender.js";
+import { updateProjects, updateTasks, domCreateTask, selectProject, domCreateProject, displayDetails, submitDetails } from "./projectTaskRender.js";
 
 const content = document.getElementById("content");
 content.append(header(), main(), dialog());
@@ -38,6 +38,9 @@ window.addEventListener("click", function(event) {
         dialogSelector.showModal();
         detailsPrompt();
         displayDetails(event.target.parentNode.parentNode.dataset.tnum);
+    }
+    if (event.target.className === "confirm-details") {
+        submitDetails();
     }
 }); 
 
