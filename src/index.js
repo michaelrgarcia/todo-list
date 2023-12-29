@@ -1,4 +1,4 @@
-import { header, main, dialog, addTaskPrompt, addProjectPrompt } from "./siteBuilder.js";
+import { header, main, dialog, addTaskPrompt, addProjectPrompt, detailsPrompt } from "./siteBuilder.js";
 import { updateProjects, updateTasks, domCreateTask, selectProject, domCreateProject } from "./projectTaskRender.js";
 
 const content = document.getElementById("content");
@@ -33,6 +33,10 @@ window.addEventListener("click", function(event) {
     }
     if (event.target.className === "svg close-dialog") {
         dialogSelector.close();
+    }
+    if (event.target.className === "svg notes") {
+        dialogSelector.showModal();
+        detailsPrompt();
     }
 }); 
 
