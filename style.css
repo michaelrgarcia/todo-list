@@ -280,7 +280,8 @@ textarea {
 }
 
 .submit-task,
-.submit-project {
+.submit-project,
+.confirm-details {
     padding: 10px;
     margin-top: 10px;
 
@@ -297,6 +298,10 @@ textarea {
 
 .submit-project {
     margin-top: 275px;
+}
+
+.confirm-details {
+    margin-top: 100px;
 }
 
 .parent-project-name {
