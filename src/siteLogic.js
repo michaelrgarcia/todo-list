@@ -4,6 +4,6 @@ export function createProject(title, selected) {
     return { title, selected, tasks };
 }
 
-export function createTask(title, description, notes, dueDate, starred, parentProject) {
-    return { title, description, notes, dueDate, starred, parentProject };
+export function createTask(title, details, dueDate, starred, parentProject, number) {
+    return { title, details, dueDate, starred, parentProject, number };
 }
