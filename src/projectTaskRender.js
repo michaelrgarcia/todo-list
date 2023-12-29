@@ -7,6 +7,19 @@ const allTaskProject = createProject("All Tasks", true);
 
 projects.push(allTaskProject);
 
+function domProjectSwitch(project) {
+    const addTaskBtn = document.getElementById("add-task");
+    const domProjectTitle = document.querySelector(".project-name");
+
+    if (project === projects[0]) {
+        addTaskBtn.style.display = "none";
+    } else {
+        addTaskBtn.style.display = "block";
+    }
+
+    domProjectTitle.textContent = project.title;
+}
+
 export function updateProjects() {
     const projectsDomMenu = document.querySelector("#projects-menu > ul");
     projectsDomMenu.replaceChildren();
@@ -56,19 +69,6 @@ export function domCreateProject() {
         dialogForm.close();
         updateProjects();
     }
-}
-
-function domProjectSwitch(project) {
-    const addTaskBtn = document.getElementById("add-task");
-    const domProjectTitle = document.querySelector(".project-name");
-
-    if (project === projects[0]) {
-        addTaskBtn.style.display = "none";
-    } else {
-        addTaskBtn.style.display = "block";
-    }
-
-    domProjectTitle.textContent = project.title;
 }
 
 export function selectProject(projectNum) {
