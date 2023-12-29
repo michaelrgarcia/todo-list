@@ -207,7 +207,7 @@ export function addProjectPrompt() {
 }
 
 export function detailsPrompt() {
-    clearFormChangeTitle("Description");
+    clearFormChangeTitle("Details");
     const formElement = document.querySelector("form > ul");
 
     const taskDetails = elementCrafter.textAreaField("", "task-details");
