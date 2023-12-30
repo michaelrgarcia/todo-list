@@ -35,9 +35,12 @@ export function updateTasks(project) {
     const tasksMenu = document.getElementById("tasks");
     tasksMenu.replaceChildren();
 
-    project.tasks.forEach((task, index) => {
-        task.number = index;
-        elementCrafter.domTask(task.title, task.parentProject, project.title, index);
+    project.tasks.forEach((task) => {
+        const parentIndex = projects.findIndex((project) => project.title === task.parentProject);
+        const taskIndex = projects[parentIndex].tasks.findIndex((desiredTask) => desiredTask.number === task.number);
+
+        task.number = taskIndex;
+        elementCrafter.domTask(task.title, task.parentProject, project.title, taskIndex, parentIndex);
     });
 }
 
@@ -91,16 +94,16 @@ export function selectProject(projectNum) {
 export function displayDetails(taskNum) {
     const domTaskDetails = document.getElementById("task-details");
     const dialogForm = document.querySelector("dialog");
+    
+    const fullNumber = taskNum.split(".");
+    const projectNumber = fullNumber[0];
+    const taskNumber = fullNumber[1];
 
-    dialogForm.setAttribute("data-tnum", taskNum);
+    const task = projects[projectNumber].tasks[taskNumber];
 
-    projects.forEach((project) => {
-        project.tasks.forEach((task) => {
-            if (task.number == taskNum) {
-                domTaskDetails.textContent = task.details;
-            }
-        });
-    });
+    dialogForm.setAttribute("data-tnum", taskNumber);
+
+    domTaskDetails.textContent = task.details;
 }
 
 export function submitDetails() {
