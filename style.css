@@ -192,6 +192,8 @@ nav div > ul > button img {
 
     border-radius: 5px;
     border-width: 1px;
+    border-color: #111827;
+
     background-color: #f9fafb;
 }
 
@@ -308,7 +310,7 @@ textarea {
 }
 
 .confirm-details {
-    margin-top: 100px;
+    margin-top: 29%;
 }
 
 .parent-project-name {
