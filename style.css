@@ -184,6 +184,10 @@ nav div > ul > button img {
 .task {
     display: flex;
     gap: 10px;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .task-check {
@@ -321,8 +325,6 @@ textarea {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-
-    max-width: 100px;
 
     align-self: center;
     margin-left: -3px;
