@@ -107,27 +107,27 @@ export function displayDetails(taskNum) {
 }
 
 export function submitDetails() {
+    const dialogForm = document.querySelector("dialog");
     const domTaskDetails = document.getElementById("task-details");
 
-    if (confirm("Are you sure?") == true) {
-        const dialogForm = document.querySelector("dialog");
-        
+    const taskNum = dialogForm.dataset.tnum;
+    const fullNumber = taskNum.split(".");
+    const projectNumber = fullNumber[0];
+    const taskNumber = fullNumber[1];
 
-        const taskNum = dialogForm.dataset.tnum;
-        const fullNumber = taskNum.split(".");
-        const projectNumber = fullNumber[0];
-        const taskNumber = fullNumber[1];
+    const task = projects[projectNumber].tasks[taskNumber];
 
-        const task = projects[projectNumber].tasks[taskNumber];
-    
-        task.details = domTaskDetails.value;
-    
+    if (task.details !== domTaskDetails.value) {
+        let confirmation = confirm("Are you sure?");
+
+        if (confirmation === true) {
+            task.details = domTaskDetails.value;
+
+            dialogForm.close();
+        }
+    } else {
         dialogForm.close();
     }
-}
-
-export function detectChanges() { 
-    
 }
 
 
