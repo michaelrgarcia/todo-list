@@ -48,7 +48,7 @@ header > img {
 }
 
 header > img:hover, 
-nav div > ul > li:hover,
+nav div > ul > button:hover,
 #add-project:hover,
 #add-task:hover,
 .task-config img:hover {
@@ -98,14 +98,14 @@ nav div > ul {
     white-space: nowrap;
 }
 
-nav div > ul > li,
+nav div > ul > button,
 #add-project,
 #add-task {
     padding: 10px;
     color: #111827;
 }
 
-nav div > ul > li {
+nav div > ul > button {
     display: flex;
     align-items: end;
     gap: 7px;
@@ -113,9 +113,12 @@ nav div > ul > li {
     margin-left: -5px;
 
     font-size: 1.1em;
+
+    background: none;
+    border: none;
 }
 
-nav div > ul > li img {
+nav div > ul > button img {
     width: 30px;
 
     filter: invert(7%) sepia(11%) saturate(3479%) hue-rotate(183deg) brightness(92%) contrast(93%);
@@ -169,6 +172,7 @@ nav div > ul > li img {
     border-radius: 5px;
     padding: 10px;
     margin-bottom: 15px;
+    background: none;
 }
 
 #tasks li:hover {
@@ -187,6 +191,7 @@ nav div > ul > li img {
     width: 25px;
 
     border-radius: 5px;
+    border-width: 1px;
     background-color: #f9fafb;
 }
 
@@ -315,7 +320,7 @@ textarea {
     text-overflow: ellipsis;
     white-space: nowrap;
 
-    width: 20vw;
+    max-width: 100px;
 
     align-self: center;
     margin-left: -3px;
