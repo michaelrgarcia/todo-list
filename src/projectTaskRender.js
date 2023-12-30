@@ -1,11 +1,9 @@
-import { createProject, createTask } from "./siteLogic";
+import { createProject, createTask, getProjects } from "./siteLogic";
 import elementCrafter from "./craftingTable";
 
-const projects = [];
+const projects = getProjects();
 
-const allTaskProject = createProject("All Tasks", true);
-
-projects.push(allTaskProject);
+const allTaskProject = projects[0];
 
 function domProjectSwitch(project) {
     const addTaskBtn = document.getElementById("add-task");
