@@ -56,7 +56,8 @@ export function main() {
             const filterTasksList = document.createElement("ul");
         
             for (let i = 0; i < 5; i++) {
-                let tab = document.createElement("li");
+                let tab = document.createElement("button");
+                tab.type = "button";
                 let tabText = document.createElement("p");
         
                 let path;
