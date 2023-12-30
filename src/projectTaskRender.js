@@ -118,7 +118,7 @@ export function submitDetails() {
     const task = projects[projectNumber].tasks[taskNumber];
 
     if (task.details !== domTaskDetails.value) {
-        let confirmation = confirm("Are you sure?");
+        let confirmation = confirm("Confirm Changes");
 
         if (confirmation === true) {
             task.details = domTaskDetails.value;
