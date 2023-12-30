@@ -26,10 +26,10 @@ function domProjectCreator(title, index) {
     projectsMenu.append(project);
 }
 
-function domTaskCreator(title, projectName, projectSwitchName, num) {
+function domTaskCreator(title, projectName, projectSwitchName, num, parentIndex) {
     const taskMenu = document.getElementById("tasks");
     let task = document.createElement("li");
-    task.setAttribute("data-tnum", num);
+    task.setAttribute("data-tnum", `${parentIndex}.${num}`);
 
     let taskInfo = document.createElement("div");
     taskInfo.classList.add("task");
@@ -129,7 +129,7 @@ function dueDateField(labelText, givenId) {
     return mainElement;
 }
 
-function elementCrafter(param1, param2, param3, param4) {
+function elementCrafter(param1, param2, param3, param4, param5) {
     const icon = function(param1) {
         let craftedIcon = iconCreator(param1);
         return craftedIcon;
@@ -140,8 +140,8 @@ function elementCrafter(param1, param2, param3, param4) {
         return craftedProject;
     }
 
-    const domTask = function(param1, param2, param3, param4) {
-        let craftedTask = domTaskCreator(param1, param2, param3, param4);
+    const domTask = function(param1, param2, param3, param4, param5) {
+        let craftedTask = domTaskCreator(param1, param2, param3, param4, param5);
         return craftedTask;
     }
 
@@ -160,7 +160,7 @@ function elementCrafter(param1, param2, param3, param4) {
         return newDateField;
     }
 
-    return { param1, param2, param3, param4, icon, domProject, domTask, textField, textAreaField, dateField };
+    return { param1, param2, param3, param4, param5, icon, domProject, domTask, textField, textAreaField, dateField };
 }
 
 export default elementCrafter();
