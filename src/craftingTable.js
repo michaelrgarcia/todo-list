@@ -14,8 +14,9 @@ function iconCreator(path) {
 
 function domProjectCreator(title, index) {
     const projectsMenu = document.querySelector("#projects-menu > ul");
-    let project = document.createElement("li");
+    let project = document.createElement("button");
     project.setAttribute("data-pnum", index);
+    project.type = "button";
 
     let projectTitle = document.createElement("p");
     projectTitle.textContent = title;
@@ -34,7 +35,7 @@ function domTaskCreator(title, projectName, projectSwitchName, num, parentIndex)
     let taskInfo = document.createElement("div");
     taskInfo.classList.add("task");
 
-    let checkbox = document.createElement("div");
+    let checkbox = document.createElement("button");
     checkbox.classList.add("task-check");
 
     let taskTitle = document.createElement("p");
