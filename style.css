@@ -92,6 +92,10 @@ nav div > ul {
     display: flex;
     flex-direction: column;
     gap: 5px;
+
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 nav div > ul > li,
@@ -115,10 +119,6 @@ nav div > ul > li img {
     width: 30px;
 
     filter: invert(7%) sepia(11%) saturate(3479%) hue-rotate(183deg) brightness(92%) contrast(93%);
-}
-
-#projects-menu {
-    overflow: auto;
 }
 
 #add-project,
@@ -149,13 +149,15 @@ nav div > ul > li img {
     font-size: 2em;
     font-weight: bold;
 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
     margin-bottom: 10px;
 }
 
 #tasks {
     list-style-type: none;
-    overflow: auto;
-
 }
 
 #tasks li {
@@ -308,6 +310,12 @@ textarea {
     color: #6b7280;
 
     font-size: .855em;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    width: 20vw;
 
     align-self: center;
     margin-left: -3px;
