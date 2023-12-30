@@ -101,27 +101,33 @@ export function displayDetails(taskNum) {
 
     const task = projects[projectNumber].tasks[taskNumber];
 
-    dialogForm.setAttribute("data-tnum", taskNumber);
+    dialogForm.setAttribute("data-tnum", taskNum);
 
     domTaskDetails.textContent = task.details;
 }
 
 export function submitDetails() {
+    const domTaskDetails = document.getElementById("task-details");
+
     if (confirm("Are you sure?") == true) {
         const dialogForm = document.querySelector("dialog");
+        
+
         const taskNum = dialogForm.dataset.tnum;
-        const domTaskDetails = document.getElementById("task-details");
+        const fullNumber = taskNum.split(".");
+        const projectNumber = fullNumber[0];
+        const taskNumber = fullNumber[1];
+
+        const task = projects[projectNumber].tasks[taskNumber];
     
-        projects.forEach((project) => {
-            project.tasks.forEach((task) => {
-                if (task.number == taskNum) {
-                    task.details = domTaskDetails.value;
-                }
-            });
-        });
+        task.details = domTaskDetails.value;
     
         dialogForm.close();
     }
+}
+
+export function detectChanges() { 
+    
 }
 
 
