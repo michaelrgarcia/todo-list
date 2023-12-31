@@ -1,5 +1,5 @@
 import { header, main, dialog, addTaskPrompt, addProjectPrompt, detailsPrompt } from "./siteBuilder.js";
-import { updateProjects, updateTasks, domCreateTask, selectProject, domCreateProject, displayDetails, submitDetails } from "./projectTaskRender.js";
+import { updateProjects, updateTasks, domCreateTask, selectProject, domCreateProject, displayDetails, submitDetails, starTask } from "./projectTaskRender.js";
 
 const content = document.getElementById("content");
 content.append(header(), main(), dialog());
@@ -41,6 +41,9 @@ window.addEventListener("click", function(event) {
     }
     if (event.target.className === "confirm-details") {
         submitDetails();
+    }
+    if (event.target.className === "svg star") {
+        starTask(event.target.parentNode.parentNode.dataset.tnum);
     }
 }); 
 
