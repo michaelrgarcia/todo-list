@@ -18,6 +18,16 @@ function domProjectSwitch(project) {
     domProjectTitle.textContent = project.title;
 }
 
+function getTask(task) {
+    const fullNumber = task.split(".");
+    const projectNumber = fullNumber[0];
+    const taskNumber = fullNumber[1];
+
+    const desiredTask = projects[projectNumber].tasks[taskNumber];
+
+    return desiredTask;
+}
+
 export function updateProjects() {
     const projectsDomMenu = document.querySelector("#projects-menu > ul");
     projectsDomMenu.replaceChildren();
@@ -38,7 +48,14 @@ export function updateTasks(project) {
         const taskIndex = projects[parentIndex].tasks.findIndex((desiredTask) => desiredTask.number === task.number);
 
         task.number = taskIndex;
-        elementCrafter.domTask(task.title, task.parentProject, project.title, taskIndex, parentIndex);
+
+        if (task.starred) {
+            let star = true;
+
+            elementCrafter.domTask(task.title, task.parentProject, project.title, taskIndex, parentIndex, star);
+        } else {
+            elementCrafter.domTask(task.title, task.parentProject, project.title, taskIndex, parentIndex);
+        }
     });
 }
 
@@ -92,12 +109,8 @@ export function selectProject(projectNum) {
 export function displayDetails(taskNum) {
     const domTaskDetails = document.getElementById("task-details");
     const dialogForm = document.querySelector("dialog");
-    
-    const fullNumber = taskNum.split(".");
-    const projectNumber = fullNumber[0];
-    const taskNumber = fullNumber[1];
 
-    const task = projects[projectNumber].tasks[taskNumber];
+    const task = getTask(taskNum);
 
     dialogForm.setAttribute("data-tnum", taskNum);
 
@@ -109,11 +122,7 @@ export function submitDetails() {
     const domTaskDetails = document.getElementById("task-details");
 
     const taskNum = dialogForm.dataset.tnum;
-    const fullNumber = taskNum.split(".");
-    const projectNumber = fullNumber[0];
-    const taskNumber = fullNumber[1];
-
-    const task = projects[projectNumber].tasks[taskNumber];
+    const task = getTask(taskNum);
 
     if (task.details !== domTaskDetails.value) {
         let confirmation = confirm("Confirm Changes");
@@ -126,6 +135,19 @@ export function submitDetails() {
     } else {
         dialogForm.close();
     }
+}
+
+export function starTask(taskNum) {
+    const task = getTask(taskNum);
+    const project = projects.find((project) => project.title === task.parentProject);
+
+    if (task.starred) {
+        task.starred = false;
+    } else {
+        task.starred = true;
+    }
+
+    updateTasks(project);
 }
 
 
