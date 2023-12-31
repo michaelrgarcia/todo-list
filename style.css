@@ -188,6 +188,15 @@ nav div > ul > button img {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+
+}
+
+.task > p:nth-child(2) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    max-width: 260px;
 }
 
 .task-check {
@@ -340,6 +349,13 @@ textarea {
     }
     dialog {
         width: calc(100% - 50px);
+    }
+    .task > p:nth-child(2) {
+        max-width: 130px;
+        
+    }
+    .confirm-details {
+        margin-top: 100px;
     }
 }
 
