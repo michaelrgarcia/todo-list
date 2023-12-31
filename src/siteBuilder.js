@@ -220,3 +220,20 @@ export function detailsPrompt() {
 
     formElement.append(taskDetails, submitButton);
 }
+
+export function settingsPrompt() {
+    clearFormChangeTitle("Task Settings");
+    const formElement = document.querySelector("form > ul");
+
+    const renameTask = document.createElement("button");
+    renameTask.type = "button";
+    renameTask.classList.add("rename-task");
+    renameTask.textContent = "Rename";
+
+    const deleteTask = document.createElement("button");
+    deleteTask.type = "button";
+    deleteTask.classList.add("delete-task");
+    deleteTask.textContent = "Delete";
+    
+    formElement.append(renameTask, deleteTask);
+}
