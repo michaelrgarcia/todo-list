@@ -303,7 +303,9 @@ textarea {
 
 .submit-task,
 .submit-project,
-.confirm-details {
+.confirm-details,
+.rename-task,
+.delete-task {
     padding: 10px;
     margin-top: 10px;
 
@@ -337,6 +339,10 @@ textarea {
 
     align-self: center;
     margin-left: -3px;
+}
+
+.delete-task {
+    margin-top: 30px;
 }
 
 
