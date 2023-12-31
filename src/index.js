@@ -1,4 +1,4 @@
-import { header, main, dialog, addTaskPrompt, addProjectPrompt, detailsPrompt } from "./siteBuilder.js";
+import { header, main, dialog, addTaskPrompt, addProjectPrompt, detailsPrompt, settingsPrompt } from "./siteBuilder.js";
 import { updateProjects, updateTasks, domCreateTask, selectProject, domCreateProject, displayDetails, submitDetails, starTask } from "./projectTaskRender.js";
 
 const content = document.getElementById("content");
@@ -44,6 +44,10 @@ window.addEventListener("click", function(event) {
     }
     if (event.target.className === "svg star") {
         starTask(event.target.parentNode.parentNode.dataset.tnum);
+    }
+    if (event.target.className === "svg other") {
+        dialogSelector.showModal();
+        settingsPrompt();
     }
 }); 
 
