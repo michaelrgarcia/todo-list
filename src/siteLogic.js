@@ -18,5 +18,5 @@ export function createTask(title, details, dueDate, starred, parentProject, numb
     return { title, details, dueDate, starred, parentProject, number };
 }
 
-//dummy commit
+
 
