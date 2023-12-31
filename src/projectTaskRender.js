@@ -150,4 +150,43 @@ export function starTask(taskNum) {
     updateTasks(project);
 }
 
+export function changeDialogTaskNum(taskNum) {
+    const dialogForm = document.querySelector("dialog");
 
+    dialogForm.setAttribute("data-tnum", taskNum);
+}
+
+export function displayTaskTitle() {
+    const domTaskTitle = document.getElementById("new-task-title");
+    const dialogForm = document.querySelector("dialog");
+
+    const taskNum = dialogForm.dataset.tnum;
+    const task = getTask(taskNum);
+
+    domTaskTitle.value = task.title;
+}
+
+export function submitTaskTitle() {
+    const dialogForm = document.querySelector("dialog");
+    const domTaskTitle = document.getElementById("new-task-title");
+
+    const taskNum = dialogForm.dataset.tnum;
+    const task = getTask(taskNum);
+    const project = projects.find((project) => project.title === task.parentProject);
+
+    if (task.title !== domTaskTitle.value) {
+        let confirmation = confirm("Confirm Changes");
+
+        if (confirmation === true) {
+            task.title = domTaskTitle.value;
+
+            dialogForm.close();
+            updateTasks(project);
+        }
+    } else {
+        dialogForm.close();
+    }
+}
+
+//a lot of duplicate code that needs to be made into a function...
+//final features are the sorting of the tasks in All tasks, and all the other date filters/others.
