@@ -237,3 +237,17 @@ export function settingsPrompt() {
     
     formElement.append(renameTask, deleteTask);
 }
+
+export function renamePrompt() {
+    const formElement = document.querySelector("form > ul");
+    formElement.replaceChildren();
+
+    const newName = elementCrafter.textField("Title:", "new-task-title");
+
+    const submitButton = document.createElement("button");
+    submitButton.type = "submit";
+    submitButton.classList.add("confirm-new-task-title");
+    submitButton.textContent = "Done";
+
+    formElement.append(newName, submitButton);
+}
