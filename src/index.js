@@ -1,5 +1,5 @@
-import { header, main, dialog, addTaskPrompt, addProjectPrompt, detailsPrompt, settingsPrompt } from "./siteBuilder.js";
-import { updateProjects, updateTasks, domCreateTask, selectProject, domCreateProject, displayDetails, submitDetails, starTask } from "./projectTaskRender.js";
+import { header, main, dialog, addTaskPrompt, addProjectPrompt, detailsPrompt, settingsPrompt, renamePrompt } from "./siteBuilder.js";
+import { updateProjects, updateTasks, domCreateTask, selectProject, domCreateProject, displayDetails, submitDetails, starTask, displayTaskTitle, changeDialogTaskNum, submitTaskTitle } from "./projectTaskRender.js";
 
 const content = document.getElementById("content");
 content.append(header(), main(), dialog());
@@ -48,7 +48,18 @@ window.addEventListener("click", function(event) {
     if (event.target.className === "svg other") {
         dialogSelector.showModal();
         settingsPrompt();
+        changeDialogTaskNum(event.target.parentNode.parentNode.dataset.tnum);
+    }
+    if (event.target.className === "rename-task") {
+        dialogSelector.showModal();
+        renamePrompt();
+        displayTaskTitle();
+    }
+    if (event.target.className === "confirm-new-task-title") {
+        submitTaskTitle();
     }
 }); 
+
+//make every svg icon run changeDialogTaskNum (bundle their event listener with a if event.target INCLUDES svg class)
 
 updateProjects();
