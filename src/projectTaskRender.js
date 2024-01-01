@@ -94,7 +94,7 @@ export function selectProject(projectNum) {
     let projectToSelect = projects[projectNum];
 
     projects.forEach((project) => {
-        if (project.title !== projectToSelect.title) {
+        if (project !== projectToSelect) {
             project.selected = false;
         } else {
             project.selected = true;
