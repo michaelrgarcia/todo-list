@@ -8,10 +8,10 @@ export function getProjects() {
     return projects;
 }
 
-export function createProject(title, selected) {
+export function createProject(title, selected, number) {
     let tasks = [];
 
-    return { title, selected, tasks };
+    return { title, selected, tasks, number };
 }
 
 export function createTask(title, details, dueDate, starred, parentProject, number) {
