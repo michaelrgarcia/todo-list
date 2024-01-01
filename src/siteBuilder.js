@@ -55,7 +55,7 @@ export function main() {
         
             const filterTasksList = document.createElement("ul");
         
-            for (let i = 0; i < 5; i++) {
+            for (let i = 0; i < 3; i++) {
                 let tab = document.createElement("button");
                 tab.type = "button";
                 let tabText = document.createElement("p");
@@ -69,21 +69,11 @@ export function main() {
                         tab.classList.add("all-tasks");
                         break;
                     case 1:
-                        path = icon4;
-                        tabText.textContent = "Today";
-                        tab.classList.add("todays-tasks");
-                        break;
-                    case 2: 
-                        path = icon5;
-                        tabText.textContent = "7 Days";
-                        tab.classList.add("7days-tasks");
-                        break;
-                    case 3:
                         path = icon6;
                         tabText.textContent = "Starred";
                         tab.classList.add("starred-tasks");
                         break;
-                    case 4:
+                    case 2:
                         path = icon7;
                         tab.classList.add("completed-tasks");
                         tabText.textContent = "Completed";
