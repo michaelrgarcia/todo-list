@@ -46,30 +46,6 @@ function getParentProject(task) {
     return project;
 }
 
-function confirmChanges(taskValue, domValue, update) {
-    const task = getTaskFromDialog();
-
-    const parentProjectIndex = getParentProjectIndex(task);
-    const project = projects.find((project) => project === projects[parentProjectIndex]); 
-
-    const dialogForm = document.querySelector("dialog");
-    
-    if (taskValue !== domValue) {
-        let confirmation = confirm("Confirm Changes");
-
-        if (confirmation === true) {
-            taskValue = domValue;
-
-            dialogForm.close();
-            if (update) {
-                updateTasks(project);
-            }
-        }
-    } else {
-        dialogForm.close();
-    }
-}
-
 export function updateProjects() {
     const projectsDomMenu = document.querySelector("#projects-menu > ul");
     projectsDomMenu.replaceChildren();
@@ -212,10 +188,10 @@ export function submitTaskTitle() {
     const domTaskTitle = document.getElementById("new-task-title");
 
     const taskNum = dialogForm.dataset.tnum;
+
     const task = getTaskFromDialog();
-
     const project = getParentProject(taskNum);
-
+    
     if (task.title !== domTaskTitle.value) {
         let confirmation = confirm("Confirm Changes");
 
