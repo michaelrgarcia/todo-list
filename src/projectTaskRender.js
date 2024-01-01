@@ -28,6 +28,48 @@ function getTask(task) {
     return desiredTask;
 }
 
+function getTaskFromDialog() {
+    const dialogForm = document.querySelector("dialog");
+
+    const taskNum = dialogForm.dataset.tnum;
+    const task = getTask(taskNum);
+
+    return task;
+}
+
+function getParentProject(task) {
+    const fullNumber = task.split(".");
+    const projectNumber = fullNumber[0];
+
+    const project = projects.find((project) => project === projects[projectNumber]);
+
+    return project;
+}
+
+function confirmChanges(taskValue, domValue, update) {
+    const task = getTaskFromDialog();
+
+    const parentProjectIndex = getParentProjectIndex(task);
+    const project = projects.find((project) => project === projects[parentProjectIndex]); 
+
+    const dialogForm = document.querySelector("dialog");
+    
+    if (taskValue !== domValue) {
+        let confirmation = confirm("Confirm Changes");
+
+        if (confirmation === true) {
+            taskValue = domValue;
+
+            dialogForm.close();
+            if (update) {
+                updateTasks(project);
+            }
+        }
+    } else {
+        dialogForm.close();
+    }
+}
+
 export function updateProjects() {
     const projectsDomMenu = document.querySelector("#projects-menu > ul");
     projectsDomMenu.replaceChildren();
@@ -44,7 +86,7 @@ export function updateTasks(project) {
     tasksMenu.replaceChildren();
 
     project.tasks.forEach((task) => {
-        const parentIndex = projects.findIndex((project) => project.title === task.parentProject);
+        const parentIndex = projects.indexOf(project);
         const taskIndex = projects[parentIndex].tasks.findIndex((desiredTask) => desiredTask.number === task.number);
 
         task.number = taskIndex;
@@ -121,8 +163,7 @@ export function submitDetails() {
     const dialogForm = document.querySelector("dialog");
     const domTaskDetails = document.getElementById("task-details");
 
-    const taskNum = dialogForm.dataset.tnum;
-    const task = getTask(taskNum);
+    const task = getTaskFromDialog();
 
     if (task.details !== domTaskDetails.value) {
         let confirmation = confirm("Confirm Changes");
@@ -139,7 +180,8 @@ export function submitDetails() {
 
 export function starTask(taskNum) {
     const task = getTask(taskNum);
-    const project = projects.find((project) => project.title === task.parentProject);
+
+    const parentProject = getParentProject(taskNum);
 
     if (task.starred) {
         task.starred = false;
@@ -147,7 +189,7 @@ export function starTask(taskNum) {
         task.starred = true;
     }
 
-    updateTasks(project);
+    updateTasks(parentProject);
 }
 
 export function changeDialogTaskNum(taskNum) {
@@ -160,8 +202,7 @@ export function displayTaskTitle() {
     const domTaskTitle = document.getElementById("new-task-title");
     const dialogForm = document.querySelector("dialog");
 
-    const taskNum = dialogForm.dataset.tnum;
-    const task = getTask(taskNum);
+    const task = getTaskFromDialog();
 
     domTaskTitle.value = task.title;
 }
@@ -171,8 +212,9 @@ export function submitTaskTitle() {
     const domTaskTitle = document.getElementById("new-task-title");
 
     const taskNum = dialogForm.dataset.tnum;
-    const task = getTask(taskNum);
-    const project = projects.find((project) => project.title === task.parentProject);
+    const task = getTaskFromDialog();
+
+    const project = getParentProject(taskNum);
 
     if (task.title !== domTaskTitle.value) {
         let confirmation = confirm("Confirm Changes");
@@ -188,5 +230,4 @@ export function submitTaskTitle() {
     }
 }
 
-//a lot of duplicate code that needs to be made into a function...
 //final features are the sorting of the tasks in All tasks, and all the other date filters/others.
