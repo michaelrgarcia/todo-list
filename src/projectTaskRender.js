@@ -10,7 +10,7 @@ const completedTasks = projects[2];
 function domProjectSwitch(project) {
     const addTaskBtn = document.getElementById("add-task");
     const domProjectTitle = document.querySelector(".project-name");
-    
+
     const pIndex = projects.indexOf(project);
     
     if (pIndex < 3) {
@@ -152,7 +152,6 @@ export function submitDetails() {
 
 export function starTask(taskNum) {
     const task = getTask(taskNum);
-    console.log(task);
 
     const selectedProject = projects.find((project) => project.selected === true);
 
@@ -186,7 +185,8 @@ export function submitTaskTitle() {
     const domTaskTitle = document.getElementById("new-task-title");
 
     const task = getTaskFromDialog();
-    const project = projects[task.ppIndex];
+
+    const selectedProject = projects.find((project) => project.selected === true);
     
     if (task.title !== domTaskTitle.value) {
         let confirmation = confirm("Confirm Changes");
@@ -195,7 +195,7 @@ export function submitTaskTitle() {
             task.title = domTaskTitle.value;
 
             dialogForm.close();
-            updateTasks(project);
+            updateTasks(selectedProject);
         }
     } else {
         dialogForm.close();
@@ -229,3 +229,13 @@ export function deleteTask() {
 }
 
 //final features are the sorting of the tasks in All tasks, and the date handling.
+
+//to do 
+
+//make the task check boxes work
+
+//add "completed" property
+//under the task checkbox function, push the selected task to the completed project
+
+//and... put the due date under the details prompt
+//when the date comes (or is near possibly), change the color of the task to yellow or red depending on how far it is
