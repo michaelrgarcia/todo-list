@@ -37,15 +37,6 @@ function getTaskFromDialog() {
     return task;
 }
 
-function getParentProject(task) {
-    const fullNumber = task.split(".");
-    const projectNumber = fullNumber[0];
-
-    const project = projects.find((project) => project === projects[projectNumber]);
-
-    return project;
-}
-
 export function updateProjects() {
     const projectsDomMenu = document.querySelector("#projects-menu > ul");
     projectsDomMenu.replaceChildren();
@@ -63,7 +54,6 @@ export function updateTasks(project) {
 
     project.tasks.forEach((task) => {
         const parentIndex = task.ppIndex;
-        console.log(parentIndex);
         const taskIndex = projects[parentIndex].tasks.findIndex((desiredTask) => desiredTask.number === task.number);
 
         task.number = taskIndex;
@@ -158,8 +148,9 @@ export function submitDetails() {
 
 export function starTask(taskNum) {
     const task = getTask(taskNum);
+    console.log(task);
 
-    const parentProject = getParentProject(taskNum);
+    const selectedProject = projects.find((project) => project.selected === true);
 
     if (task.starred) {
         task.starred = false;
@@ -167,7 +158,7 @@ export function starTask(taskNum) {
         task.starred = true;
     }
 
-    updateTasks(parentProject);
+    updateTasks(selectedProject);
 }
 
 export function changeDialogTaskNum(taskNum) {
@@ -188,10 +179,8 @@ export function submitTaskTitle() {
     const dialogForm = document.querySelector("dialog");
     const domTaskTitle = document.getElementById("new-task-title");
 
-    const taskNum = dialogForm.dataset.tnum;
-
     const task = getTaskFromDialog();
-    const project = getParentProject(taskNum);
+    const project = projects[task.ppIndex];
     
     if (task.title !== domTaskTitle.value) {
         let confirmation = confirm("Confirm Changes");
@@ -213,14 +202,14 @@ export function deleteTask() {
     const taskNum = dialogForm.dataset.tnum;
 
     const task = getTaskFromDialog();
-    const project = getParentProject(taskNum);
+    const project = projects[task.ppIndex];
 
     let confirmation = confirm("Confirm Delete Task");
 
     if (confirmation === true) {
         const allTasksIndex = projects[0].tasks.find(
             (desiredTask) => 
-            desiredTask.ppIndex === task.ppIndex || 
+            desiredTask.ppIndex === task.ppIndex && 
             desiredTask.number === task.number 
         )
 
@@ -235,6 +224,4 @@ export function deleteTask() {
     }
 }
 
-//make project number.....
-
-//final features are the sorting of the tasks in All tasks, and all the other date filters/others.
+//final features are the sorting of the tasks in All tasks, and the date handling.
