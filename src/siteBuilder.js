@@ -168,6 +168,9 @@ export function dialog() {
 }
 
 export function addTaskPrompt() {
+    const dialogSelector = document.querySelector("dialog");
+    dialogSelector.showModal();
+
     clearFormChangeTitle("Add Task");
     const formElement = document.querySelector("form > ul");
 
@@ -184,6 +187,9 @@ export function addTaskPrompt() {
 }
 
 export function addProjectPrompt() {
+    const dialogSelector = document.querySelector("dialog");
+    dialogSelector.showModal();
+
     clearFormChangeTitle("Add Project");
     const formElement = document.querySelector("form > ul");
 
@@ -198,6 +204,9 @@ export function addProjectPrompt() {
 }
 
 export function detailsPrompt() {
+    const dialogSelector = document.querySelector("dialog");
+    dialogSelector.showModal();
+
     clearFormChangeTitle("Details");
     const formElement = document.querySelector("form > ul");
 
@@ -212,6 +221,9 @@ export function detailsPrompt() {
 }
 
 export function settingsPrompt() {
+    const dialogSelector = document.querySelector("dialog");
+    dialogSelector.showModal();
+
     clearFormChangeTitle("Task Settings");
     const formElement = document.querySelector("form > ul");
 
@@ -229,6 +241,9 @@ export function settingsPrompt() {
 }
 
 export function renamePrompt() {
+    const dialogSelector = document.querySelector("dialog");
+    dialogSelector.showModal();
+
     const formElement = document.querySelector("form > ul");
     formElement.replaceChildren();
 
@@ -240,4 +255,9 @@ export function renamePrompt() {
     submitButton.textContent = "Done";
 
     formElement.append(newName, submitButton);
+}
+
+export function closeDialog() {
+    const dialogSelector = document.querySelector("dialog");
+    dialogSelector.close();
 }
