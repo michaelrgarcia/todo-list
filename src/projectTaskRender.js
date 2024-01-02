@@ -199,15 +199,13 @@ export function submitTaskTitle() {
 export function deleteTask() {
     const dialogForm = document.querySelector("dialog");
 
-    const taskNum = dialogForm.dataset.tnum;
-
     const task = getTaskFromDialog();
     const project = projects[task.ppIndex];
 
     let confirmation = confirm("Confirm Delete Task");
 
     if (confirmation === true) {
-        const allTasksIndex = projects[0].tasks.find(
+        const allTasksIndex = projects[0].tasks.findIndex(
             (desiredTask) => 
             desiredTask.ppIndex === task.ppIndex && 
             desiredTask.number === task.number 
