@@ -4,12 +4,16 @@ import elementCrafter from "./craftingTable";
 const projects = getProjects();
 
 const allTaskProject = projects[0];
+const starredTasks = projects[1];
+const completedTasks = projects[2];
 
 function domProjectSwitch(project) {
     const addTaskBtn = document.getElementById("add-task");
     const domProjectTitle = document.querySelector(".project-name");
-
-    if (project === projects[0]) {
+    
+    const pIndex = projects.indexOf(project);
+    
+    if (pIndex < 3) {
         addTaskBtn.style.display = "none";
     } else {
         addTaskBtn.style.display = "block";
@@ -42,7 +46,7 @@ export function updateProjects() {
     projectsDomMenu.replaceChildren();
 
     projects.forEach((project, index) => {
-        if (index > 0) {
+        if (index > 2) {
             elementCrafter.domProject(project.title, index);
         }
     });
@@ -154,8 +158,10 @@ export function starTask(taskNum) {
 
     if (task.starred) {
         task.starred = false;
+        starredTasks.tasks.splice(task.index, 1);
     } else {
         task.starred = true;
+        starredTasks.tasks.push(task);
     }
 
     updateTasks(selectedProject);
