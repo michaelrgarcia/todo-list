@@ -1,5 +1,5 @@
 import { header, main, dialog, addTaskPrompt, addProjectPrompt, detailsPrompt, settingsPrompt, renamePrompt } from "./siteBuilder.js";
-import { updateProjects, updateTasks, domCreateTask, selectProject, domCreateProject, displayDetails, submitDetails, starTask, displayTaskTitle, changeDialogTaskNum, submitTaskTitle } from "./projectTaskRender.js";
+import { updateProjects, updateTasks, domCreateTask, selectProject, domCreateProject, displayDetails, submitDetails, starTask, displayTaskTitle, changeDialogTaskNum, submitTaskTitle, deleteTask } from "./projectTaskRender.js";
 
 const content = document.getElementById("content");
 content.append(header(), main(), dialog());
@@ -58,8 +58,10 @@ window.addEventListener("click", function(event) {
     if (event.target.className === "confirm-new-task-title") {
         submitTaskTitle();
     }
+    if (event.target.className === "delete-task") {
+        dialogSelector.showModal();
+        deleteTask();
+    }
 }); 
-
-//make every svg icon run changeDialogTaskNum (bundle their event listener with a if event.target INCLUDES svg class)
 
 updateProjects();
