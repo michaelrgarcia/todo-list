@@ -62,7 +62,8 @@ export function updateTasks(project) {
     tasksMenu.replaceChildren();
 
     project.tasks.forEach((task) => {
-        const parentIndex = projects.indexOf(project);
+        const parentIndex = task.ppIndex;
+        console.log(parentIndex);
         const taskIndex = projects[parentIndex].tasks.findIndex((desiredTask) => desiredTask.number === task.number);
 
         task.number = taskIndex;
@@ -83,11 +84,12 @@ export function domCreateTask() {
     const due = document.getElementById("task-due");
 
     const selectedProject = projects.find((project) => project.selected === true);
+    const selectedProjectIndex = projects.findIndex((project) => project.selected);
 
     const dialogForm = document.querySelector("dialog");
 
     if (title.value !== "") {
-        const newTask = createTask(title.value, details.value, due.value, false, selectedProject.title);
+        const newTask = createTask(title.value, details.value, due.value, false, selectedProject.title, "0", selectedProjectIndex);
         selectedProject.tasks.push(newTask);
         allTaskProject.tasks.push(newTask);
         dialogForm.close();
@@ -176,7 +178,6 @@ export function changeDialogTaskNum(taskNum) {
 
 export function displayTaskTitle() {
     const domTaskTitle = document.getElementById("new-task-title");
-    const dialogForm = document.querySelector("dialog");
 
     const task = getTaskFromDialog();
 
@@ -205,5 +206,35 @@ export function submitTaskTitle() {
         dialogForm.close();
     }
 }
+
+export function deleteTask() {
+    const dialogForm = document.querySelector("dialog");
+
+    const taskNum = dialogForm.dataset.tnum;
+
+    const task = getTaskFromDialog();
+    const project = getParentProject(taskNum);
+
+    let confirmation = confirm("Confirm Delete Task");
+
+    if (confirmation === true) {
+        const allTasksIndex = projects[0].tasks.find(
+            (desiredTask) => 
+            desiredTask.ppIndex === task.ppIndex || 
+            desiredTask.number === task.number 
+        )
+
+        project.tasks.splice(task.index, 1);
+        projects[0].tasks.splice(allTasksIndex, 1);
+
+        updateTasks(project);
+
+        dialogForm.close();
+    } else {
+        dialogForm.close();
+    }
+}
+
+//make project number.....
 
 //final features are the sorting of the tasks in All tasks, and all the other date filters/others.
