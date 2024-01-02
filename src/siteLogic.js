@@ -1,8 +1,10 @@
 const projects = [];
 
 const allTaskProject = createProject("All Tasks", true);
+const starredTasks = createProject("Starred", false);
+const completedTasks = createProject("Completed", false);
 
-projects.push(allTaskProject);
+projects.push(allTaskProject, starredTasks, completedTasks);
 
 export function getProjects() {
     return projects;
