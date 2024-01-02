@@ -1,5 +1,5 @@
-import { header, main, dialog, addTaskPrompt, addProjectPrompt, detailsPrompt, settingsPrompt, renamePrompt } from "./siteBuilder.js";
-import { updateProjects, updateTasks, domCreateTask, selectProject, domCreateProject, displayDetails, submitDetails, starTask, displayTaskTitle, changeDialogTaskNum, submitTaskTitle, deleteTask } from "./projectTaskRender.js";
+import { header, main, dialog, addTaskPrompt, addProjectPrompt, detailsPrompt, settingsPrompt, renamePrompt, closeDialog } from "./siteBuilder.js";
+import { updateProjects, domCreateTask, selectProject, domCreateProject, displayDetails, submitDetails, starTask, displayTaskTitle, changeDialogTaskNum, submitTaskTitle, deleteTask } from "./projectTaskRender.js";
 
 const content = document.getElementById("content");
 content.append(header(), main(), dialog());
@@ -7,8 +7,6 @@ content.append(header(), main(), dialog());
 selectProject(0); //selects "All Tasks" project
 
 window.addEventListener("click", function(event) {
-    const dialogSelector = document.querySelector("dialog");
-
     if (event.target.className === "all-tasks" || event.target.parentNode.className === "all-tasks") {
         selectProject(0);
     }
@@ -18,11 +16,9 @@ window.addEventListener("click", function(event) {
         selectProject(event.target.parentNode.dataset.pnum);
     }
     if (event.target.id === "add-task") {
-        dialogSelector.showModal();
         addTaskPrompt();
     }
     if (event.target.id === "add-project") {
-        dialogSelector.showModal();
         addProjectPrompt();
     }
     if (event.target.className === "submit-task") {
@@ -32,10 +28,9 @@ window.addEventListener("click", function(event) {
         domCreateProject();
     }
     if (event.target.className === "svg close-dialog") {
-        dialogSelector.close();
+        closeDialog();
     }
     if (event.target.className === "svg notes") {
-        dialogSelector.showModal();
         detailsPrompt();
         displayDetails(event.target.parentNode.parentNode.dataset.tnum);
     }
@@ -46,12 +41,10 @@ window.addEventListener("click", function(event) {
         starTask(event.target.parentNode.parentNode.dataset.tnum);
     }
     if (event.target.className === "svg other") {
-        dialogSelector.showModal();
         settingsPrompt();
         changeDialogTaskNum(event.target.parentNode.parentNode.dataset.tnum);
     }
     if (event.target.className === "rename-task") {
-        dialogSelector.showModal();
         renamePrompt();
         displayTaskTitle();
     }
@@ -59,7 +52,6 @@ window.addEventListener("click", function(event) {
         submitTaskTitle();
     }
     if (event.target.className === "delete-task") {
-        dialogSelector.showModal();
         deleteTask();
     }
 }); 
