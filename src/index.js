@@ -10,6 +10,9 @@ window.addEventListener("click", function(event) {
     if (event.target.className === "all-tasks" || event.target.parentNode.className === "all-tasks") {
         selectProject(0);
     }
+    if (event.target.className === "starred-tasks" || event.target.parentNode.className === "starred-tasks") {
+        selectProject(1);
+    }
     if (event.target.dataset.pnum) {
         selectProject(event.target.dataset.pnum);
     } else if (event.target.parentNode.dataset.pnum) {
