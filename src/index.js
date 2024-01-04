@@ -1,5 +1,5 @@
 import { header, main, dialog, addTaskPrompt, addProjectPrompt, detailsPrompt, settingsPrompt, renamePrompt, closeDialog } from "./siteBuilder.js";
-import { updateProjects, domCreateTask, selectProject, domCreateProject, displayDetails, submitDetails, starTask, displayTaskTitle, changeDialogTaskNum, submitTaskTitle, deleteTask } from "./projectTaskRender.js";
+import { updateProjects, domCreateTask, selectProject, domCreateProject, displayDetails, submitDetails, starTask, displayTaskTitle, changeDialogTaskNum, submitTaskTitle, deleteTask, completeTask } from "./projectTaskRender.js";
 
 const content = document.getElementById("content");
 content.append(header(), main(), dialog());
@@ -7,11 +7,16 @@ content.append(header(), main(), dialog());
 selectProject(0); //selects "All Tasks" project
 
 window.addEventListener("click", function(event) {
+    let domTask = event.target.parentNode.parentNode.dataset.tnum;
+
     if (event.target.className === "all-tasks" || event.target.parentNode.className === "all-tasks") {
         selectProject(0);
     }
     if (event.target.className === "starred-tasks" || event.target.parentNode.className === "starred-tasks") {
         selectProject(1);
+    }
+    if (event.target.className === "completed-tasks" || event.target.parentNode.className === "completed-tasks") {
+        selectProject(2);
     }
     if (event.target.dataset.pnum) {
         selectProject(event.target.dataset.pnum);
@@ -35,17 +40,17 @@ window.addEventListener("click", function(event) {
     }
     if (event.target.className === "svg notes") {
         detailsPrompt();
-        displayDetails(event.target.parentNode.parentNode.dataset.tnum);
+        displayDetails(domTask);
     }
     if (event.target.className === "confirm-details") {
         submitDetails();
     }
     if (event.target.className === "svg star") {
-        starTask(event.target.parentNode.parentNode.dataset.tnum);
+        starTask(domTask);
     }
     if (event.target.className === "svg other") {
         settingsPrompt();
-        changeDialogTaskNum(event.target.parentNode.parentNode.dataset.tnum);
+        changeDialogTaskNum(domTask);
     }
     if (event.target.className === "rename-task") {
         renamePrompt();
@@ -56,6 +61,9 @@ window.addEventListener("click", function(event) {
     }
     if (event.target.className === "delete-task") {
         deleteTask();
+    }
+    if (event.target.className === "task-check") {
+        completeTask(domTask);
     }
 }); 
 
