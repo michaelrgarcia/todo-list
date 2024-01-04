@@ -210,26 +210,52 @@ export function deleteTask() {
 
     let confirmation = confirm("Confirm Delete Task");
 
-        if (confirmation === true) {
-            projects.forEach((project) => {
-                project.tasks.forEach((taskToDelete) => {
-                    if (taskToDelete.number === task.number && taskToDelete.ppIndex === task.ppIndex ) {
+    if (confirmation === true) {
+        projects.forEach((project) => {
+            project.tasks.forEach((taskToDelete) => {
+                if (taskToDelete.number === task.number && 
+                    taskToDelete.ppIndex === task.ppIndex ) {
                         project.tasks.splice(taskToDelete.number, 1);
-                    }
-                });
+                }
             });
+        });
 
-            updateTasks(project);
+        updateTasks(project);
 
-            dialogForm.close();
-        } else {
-            dialogForm.close();
-        }
-
-
+        dialogForm.close();
+    } else {
+        dialogForm.close();
+    }
 }
 
-//final features are the sorting of the tasks in All tasks, and the date handling.
+export function completeTask(taskNum) {
+    const task = getTask(taskNum);
+    const selectedProject = projects.find((project) => project.selected === true);
+
+    let confirmation = confirm("Confirm Complete Task");
+
+    if (confirmation === true) {
+        task.completed = true;
+        completedTasks.tasks.push(task);
+
+        projects.forEach((project) => {
+            if (project !== completedTasks) {
+                project.tasks.forEach((task) => {
+                    project.tasks.splice(task.index, 1);
+                });
+            }
+        });
+    }
+
+    updateTasks(selectedProject);
+}
+
+export function domCompletedTasks() {
+    //put inside updateTasks()
+    completedTasks.tasks.forEach((task) => {
+
+    })
+}
 
 //to do 
 
