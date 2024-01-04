@@ -157,7 +157,7 @@ export function starTask(taskNum) {
 
     if (task.starred) {
         task.starred = false;
-        starredTasks.tasks.splice(task.index, 1);
+        starredTasks.tasks.splice(task.number, 1);
     } else {
         task.starred = true;
         starredTasks.tasks.push(task);
@@ -241,7 +241,7 @@ export function completeTask(taskNum) {
         projects.forEach((project) => {
             if (project !== completedTasks) {
                 project.tasks.forEach((task) => {
-                    project.tasks.splice(task.index, 1);
+                    project.tasks.splice(task.number, 1);
                 });
             }
         });

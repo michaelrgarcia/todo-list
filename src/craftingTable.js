@@ -47,7 +47,8 @@ function domTaskCreator(title, projectName, projectSwitchName, num, parentIndex,
     parentProject.textContent = `(${projectName})`;
 
     if (projectSwitchName === "All Tasks" || 
-        projectSwitchName === "Starred") {
+        projectSwitchName === "Starred" ||
+        projectSwitchName === "Completed") {
         parentProject.style.display = "block";
     } else {
         parentProject.style.display = "none";
