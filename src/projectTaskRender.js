@@ -210,22 +210,23 @@ export function deleteTask() {
 
     let confirmation = confirm("Confirm Delete Task");
 
-    if (confirmation === true) {
-        const allTasksIndex = projects[0].tasks.findIndex(
-            (desiredTask) => 
-            desiredTask.ppIndex === task.ppIndex && 
-            desiredTask.number === task.number 
-        )
+        if (confirmation === true) {
+            projects.forEach((project) => {
+                project.tasks.forEach((taskToDelete) => {
+                    if (taskToDelete.number === task.number && taskToDelete.ppIndex === task.ppIndex ) {
+                        project.tasks.splice(taskToDelete.number, 1);
+                    }
+                });
+            });
 
-        project.tasks.splice(task.index, 1);
-        projects[0].tasks.splice(allTasksIndex, 1);
+            updateTasks(project);
 
-        updateTasks(project);
+            dialogForm.close();
+        } else {
+            dialogForm.close();
+        }
 
-        dialogForm.close();
-    } else {
-        dialogForm.close();
-    }
+
 }
 
 //final features are the sorting of the tasks in All tasks, and the date handling.
