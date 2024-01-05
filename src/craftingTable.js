@@ -84,11 +84,12 @@ function domTaskCreator(title, projectName, projectSwitchName, num, parentIndex,
     //maybe in its own dialog form
 }
 
-function domCompletedTaskCreator(title, projectName) {
+function domCompletedTaskCreator(title, projectName, parentIndex, taskNum, details) {
     const taskMenu = document.getElementById("tasks");
 
     let task = document.createElement("li");
     task.classList.add("completed");
+    task.setAttribute("data-tnum", `${parentIndex}.${taskNum}`);
 
     let taskInfo = document.createElement("div");
     taskInfo.classList.add("task");
@@ -110,7 +111,7 @@ function domCompletedTaskCreator(title, projectName) {
     taskSettings.classList.add("task-config");
 
     let notes = iconCreator(icon8);
-    notes.classList.add("notes");
+    notes.classList.add("notes", "completed");
 
     taskSettings.append(notes);
 
@@ -207,8 +208,8 @@ function elementCrafter(param1, param2, param3, param4, param5, param6) {
         return newDateField;
     }
 
-    const domCompletedTask = function(param1, param2) {
-        let completedTask = domCompletedTaskCreator(param1, param2);
+    const domCompletedTask = function(param1, param2, param3, param4) {
+        let completedTask = domCompletedTaskCreator(param1, param2, param3, param4);
         return completedTask;
     }
 
