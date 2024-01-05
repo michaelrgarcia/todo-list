@@ -84,6 +84,40 @@ function domTaskCreator(title, projectName, projectSwitchName, num, parentIndex,
     //maybe in its own dialog form
 }
 
+function domCompletedTaskCreator(title, projectName) {
+    const taskMenu = document.getElementById("tasks");
+
+    let task = document.createElement("li");
+    task.classList.add("completed");
+
+    let taskInfo = document.createElement("div");
+    taskInfo.classList.add("task");
+
+    let checkbox = document.createElement("button");
+    checkbox.classList.add("task-check", "completed");
+    checkbox.style.userSelect = "none";
+
+    let taskTitle = document.createElement("p");
+    taskTitle.textContent = title;
+
+    let parentProject = document.createElement("p");
+    parentProject.classList.add("parent-project-name");
+    parentProject.textContent = `(${projectName})`;
+
+    taskInfo.append(checkbox, taskTitle, parentProject);
+
+    let taskSettings = document.createElement("div");
+    taskSettings.classList.add("task-config");
+
+    let notes = iconCreator(icon8);
+    notes.classList.add("notes");
+
+    taskSettings.append(notes);
+
+    task.append(taskInfo, taskSettings);
+    taskMenu.append(task);
+}
+
 function textInput(labelText, givenId) {
     const mainElement = document.createElement("li");
 
@@ -173,7 +207,12 @@ function elementCrafter(param1, param2, param3, param4, param5, param6) {
         return newDateField;
     }
 
-    return { param1, param2, param3, param4, param5, param6, icon, domProject, domTask, textField, textAreaField, dateField };
+    const domCompletedTask = function(param1, param2) {
+        let completedTask = domCompletedTaskCreator(param1, param2);
+        return completedTask;
+    }
+
+    return { param1, param2, param3, param4, param5, param6, icon, domProject, domTask, textField, textAreaField, dateField, domCompletedTask };
 }
 
 export default elementCrafter();
