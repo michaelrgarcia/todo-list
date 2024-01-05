@@ -175,6 +175,10 @@ nav div > ul > button img {
     background: none;
 }
 
+#tasks li.completed {
+    opacity: 0.7;
+}
+
 #tasks li:hover {
     background-color: #9ca3af31;
 
@@ -188,7 +192,6 @@ nav div > ul > button img {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-
 }
 
 .task > p:nth-child(2) {
@@ -210,8 +213,17 @@ nav div > ul > button img {
     background-color: #f9fafb;
 }
 
+.task-check.completed {
+    background-color: #00000017;
+    border: none;
+}
+
 .task-check:hover {
     background-color: rgba(255, 255, 255, 0.575);
+}
+
+.task-check.completed:hover {
+    background-color: #00000017;
 }
 
 .task-config {
