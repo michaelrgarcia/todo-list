@@ -62,12 +62,16 @@ export function updateTasks(project) {
 
         task.number = taskIndex;
 
-        if (task.starred) {
+        if (task.starred && !task.completed) {
             let star = true;
 
             elementCrafter.domTask(task.title, task.parentProject, project.title, taskIndex, parentIndex, star);
-        } else {
+        } else if (!task.starred && !task.completed) {
             elementCrafter.domTask(task.title, task.parentProject, project.title, taskIndex, parentIndex);
+        }
+
+        if (task.completed) {
+            elementCrafter.domCompletedTask(task.title, task.parentProject);
         }
     });
 }
