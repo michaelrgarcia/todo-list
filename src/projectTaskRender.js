@@ -30,6 +30,7 @@ function getTask(task) {
     const desiredTask = projects[projectNumber].tasks[taskNumber];
 
     return desiredTask;
+    //fix this function, it doesn't take kindly to completed tasks
 }
 
 function getTaskFromDialog() {
@@ -60,18 +61,21 @@ export function updateTasks(project) {
         const parentIndex = task.ppIndex;
         const taskIndex = projects[parentIndex].tasks.findIndex((desiredTask) => desiredTask.number === task.number);
 
-        task.number = taskIndex;
-
         if (task.starred && !task.completed) {
             let star = true;
+
+            task.number = taskIndex;
 
             elementCrafter.domTask(task.title, task.parentProject, project.title, taskIndex, parentIndex, star);
         } else if (!task.starred && !task.completed) {
             elementCrafter.domTask(task.title, task.parentProject, project.title, taskIndex, parentIndex);
+
+            task.number = taskIndex;
         }
 
         if (task.completed) {
-            elementCrafter.domCompletedTask(task.title, task.parentProject);
+            console.log(task.details);
+            elementCrafter.domCompletedTask(task.title, task.parentProject, parentIndex, task.number);
         }
     });
 }
@@ -252,13 +256,6 @@ export function completeTask(taskNum) {
     }
 
     updateTasks(selectedProject);
-}
-
-export function domCompletedTasks() {
-    //put inside updateTasks()
-    completedTasks.tasks.forEach((task) => {
-
-    })
 }
 
 //to do 
