@@ -83,7 +83,7 @@ export function domCreateTask() {
     const dialogForm = document.querySelector("dialog");
 
     if (title.value !== "") {
-        const newTask = createTask(title.value, details.value, due.value, false, selectedProject.title, "0", selectedProjectIndex);
+        const newTask = createTask(title.value, details.value, due.value, false, selectedProject.title, "0", selectedProjectIndex, false);
         selectedProject.tasks.push(newTask);
         allTaskProject.tasks.push(newTask);
         dialogForm.close();
