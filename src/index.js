@@ -65,6 +65,10 @@ window.addEventListener("click", function(event) {
     if (event.target.className === "task-check") {
         completeTask(domTask);
     }
+    if (event.target.className === "svg notes completed") {
+        detailsPrompt();
+        displayDetails(domTask);
+    }
 }); 
 
 updateProjects();
