@@ -319,7 +319,10 @@ textarea {
 .confirm-details,
 .rename-task,
 .delete-task,
-.confirm-new-task-title {
+.confirm-new-task-title,
+.rename-project,
+.delete-project,
+.confirm-new-project-title {
     padding: 10px;
     margin-top: 10px;
 
