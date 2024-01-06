@@ -30,7 +30,6 @@ function getTask(task) {
     const desiredTask = projects[projectNumber].tasks[taskNumber];
 
     return desiredTask;
-    //fix this function, it doesn't take kindly to completed tasks
 }
 
 function getTaskFromDialog() {
@@ -74,7 +73,6 @@ export function updateTasks(project) {
         }
 
         if (task.completed) {
-            console.log(task.details);
             elementCrafter.domCompletedTask(task.title, task.parentProject, 2, index);
         }
     });
@@ -145,16 +143,18 @@ export function submitDetails() {
 
     const task = getTaskFromDialog();
 
-    if (task.details !== domTaskDetails.value) {
-        let confirmation = confirm("Confirm Changes");
-
-        if (confirmation === true) {
-            task.details = domTaskDetails.value;
-
+    if (!task.completed) {
+        if (task.details !== domTaskDetails.value) {
+            let confirmation = confirm("Confirm Changes");
+    
+            if (confirmation === true) {
+                task.details = domTaskDetails.value;
+    
+                dialogForm.close();
+            }
+        } else {
             dialogForm.close();
         }
-    } else {
-        dialogForm.close();
     }
 }
 
@@ -196,19 +196,19 @@ export function submitTaskTitle() {
 
     const selectedProject = projects.find((project) => project.selected === true);
     
-    if (task.title !== domTaskTitle.value) {
+    if ((task.title !== domTaskTitle.value) && !task.completed) {
         let confirmation = confirm("Confirm Changes");
-
+    
         if (confirmation === true) {
             task.title = domTaskTitle.value;
-
+    
             dialogForm.close();
             updateTasks(selectedProject);
+        } else {
+            dialogForm.close();
         }
-    } else {
-        dialogForm.close();
     }
-}
+}   
 
 export function deleteTask() {
     const dialogForm = document.querySelector("dialog");
@@ -223,7 +223,7 @@ export function deleteTask() {
             project.tasks.forEach((taskToDelete) => {
                 if (taskToDelete.number === task.number && 
                     taskToDelete.ppIndex === task.ppIndex) {
-                        project.tasks.splice(taskToDelete.number, 1);
+                    project.tasks.splice(taskToDelete.number, 1);
                 }
             });
         });
@@ -251,7 +251,7 @@ export function completeTask(taskNum) {
                 project.tasks.forEach((desiredTask) => {
                     if (task.ppIndex === desiredTask.ppIndex && 
                         task.number === desiredTask.number) {
-                            project.tasks.splice(desiredTask.number, 1);
+                        project.tasks.splice(desiredTask.number, 1);
                     }
                 });
             }
@@ -261,5 +261,5 @@ export function completeTask(taskNum) {
     updateTasks(selectedProject);
 }
 
-//and... put the due date under the details prompt
+//put the due date under the details prompt
 //when the date comes (or is near possibly), change the color of the task to yellow or red depending on how far it is
