@@ -65,7 +65,3 @@ export function submitTaskTitle() {
         }
     }
 }   
-
-export function showProjectOptions(project) {
-    
-}
