@@ -380,7 +380,11 @@ textarea {
 #projects-menu button .project-settings {
     width: 25px;
     
-    align-self: center;
+    align-self: flex-end;
+}
+
+.delete-project {
+    margin-top: 25px;
 }
 
 @media (max-width: 930px) {
