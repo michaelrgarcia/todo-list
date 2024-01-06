@@ -1,5 +1,6 @@
 import { header, main, dialog, addTaskPrompt, addProjectPrompt, detailsPrompt, settingsPrompt, renamePrompt, closeDialog } from "./siteBuilder.js";
-import { updateProjects, domCreateTask, selectProject, domCreateProject, displayDetails, submitDetails, starTask, displayTaskTitle, changeDialogTaskNum, submitTaskTitle, deleteTask, completeTask, displayCompletedTaskDetails, displayDate } from "./projectTaskRender.js";
+import { updateProjects, domCreateTask, selectProject, domCreateProject, displayDetails, starTask, deleteTask, completeTask, displayCompletedTaskDetails, displayDate } from "./projectTaskRender.js";
+import { changeDialogTaskNum, displayTaskTitle, submitDetails, submitTaskTitle } from "./otherDomLogic.js";
 
 const content = document.getElementById("content");
 content.append(header(), main(), dialog());
@@ -67,6 +68,14 @@ window.addEventListener("click", function(event) {
     if (event.target.className === "task-check") {
         completeTask(domTask);
     }
-}); 
+});
+
+window.addEventListener("mouseover", function(event) {
+    if (event.target.dataset.pnum || 
+        event.target.parentNode.dataset.pnum) {
+        //showProjectOptions()
+        //will probably add a class called "show". updateProjects will handle the actual showing of the icon buttons that allow the user to access the settings
+    }
+});
 
 updateProjects();
