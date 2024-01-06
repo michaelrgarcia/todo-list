@@ -133,14 +133,42 @@ export function displayDetails(taskNum) {
     const task = getTask(taskNum);
 
     if (task.completed) {
-        domTaskDetails.setAttribute("readonly", "");
+        domTaskDetails.disabled = true;
     } else if (!task.completed) {
-        domTaskDetails.removeAttribute("readonly");
+        domTaskDetails.disabled = false;
     }
 
     dialogForm.setAttribute("data-tnum", taskNum);
 
     domTaskDetails.textContent = task.details;
+}
+
+export function displayDate(taskNum) {
+    const domTaskDue = document.getElementById("task-due");
+    const inputParent = domTaskDue.parentNode;
+    const confirmDetails = document.querySelector(".confirm-details");
+
+    const dialogForm = document.querySelector("dialog");
+
+    const task = getTask(taskNum);
+
+    if (task.dueDate === "") {
+        inputParent.style.display = "none";
+        confirmDetails.style.marginTop = "29%";
+    } else {
+        inputParent.style.display = "block";
+        confirmDetails.style.marginTop = "45px";
+    }
+
+    if (task.completed) {
+        domTaskDue.disabled = true;
+    } else if (!task.completed) {
+        domTaskDue.disabled = false;
+    }
+
+    dialogForm.setAttribute("data-tnum", taskNum);
+
+    domTaskDue.value = task.dueDate;
 }
 
 export function submitDetails() {
