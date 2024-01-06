@@ -339,7 +339,7 @@ textarea {
 }
 
 .confirm-details {
-    margin-top: 29%;
+    margin-top: 45px;
 }
 
 .parent-project-name {
@@ -357,10 +357,6 @@ textarea {
 
 .delete-task {
     margin-top: 30px;
-}
-
-#task-details:read-only:hover {
-    cursor: default;
 }
 
 @media (max-width: 930px) {
