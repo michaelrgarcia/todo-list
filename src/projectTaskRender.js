@@ -22,7 +22,7 @@ function domProjectSwitch(project) {
     domProjectTitle.textContent = project.title;
 }
 
-function getTask(task) {
+export function getTask(task) {
     const fullNumber = task.split(".");
     const projectNumber = fullNumber[0];
     const taskNumber = fullNumber[1];
@@ -32,13 +32,15 @@ function getTask(task) {
     return desiredTask;
 }
 
-function getTaskFromDialog() {
+export function getTaskFromDialog() {
     const dialogForm = document.querySelector("dialog");
 
     const taskNum = dialogForm.dataset.tnum;
     const task = getTask(taskNum);
 
     return task;
+
+    //dom related module?
 }
 
 export function updateProjects() {
@@ -124,6 +126,8 @@ export function selectProject(projectNum) {
     domProjectSwitch(projectToSelect);
     
     updateTasks(projectToSelect);
+
+    //sitelogic?
 }
 
 export function displayDetails(taskNum) {
@@ -171,27 +175,6 @@ export function displayDate(taskNum) {
     domTaskDue.value = task.dueDate;
 }
 
-export function submitDetails() {
-    const dialogForm = document.querySelector("dialog");
-    const domTaskDetails = document.getElementById("task-details");
-
-    const task = getTaskFromDialog();
-
-    if (!task.completed) {
-        if (task.details !== domTaskDetails.value) {
-            let confirmation = confirm("Confirm Changes");
-    
-            if (confirmation === true) {
-                task.details = domTaskDetails.value;
-    
-                dialogForm.close();
-            }
-        } else {
-            dialogForm.close();
-        }
-    }
-}
-
 export function starTask(taskNum) {
     const task = getTask(taskNum);
 
@@ -206,43 +189,9 @@ export function starTask(taskNum) {
     }
 
     updateTasks(selectedProject);
+
+    //move to siteLogic? trying to declutter this file
 }
-
-export function changeDialogTaskNum(taskNum) {
-    const dialogForm = document.querySelector("dialog");
-
-    dialogForm.setAttribute("data-tnum", taskNum);
-}
-
-export function displayTaskTitle() {
-    const domTaskTitle = document.getElementById("new-task-title");
-
-    const task = getTaskFromDialog();
-
-    domTaskTitle.value = task.title;
-}
-
-export function submitTaskTitle() {
-    const dialogForm = document.querySelector("dialog");
-    const domTaskTitle = document.getElementById("new-task-title");
-
-    const task = getTaskFromDialog();
-
-    const selectedProject = projects.find((project) => project.selected === true);
-    
-    if ((task.title !== domTaskTitle.value) && !task.completed) {
-        let confirmation = confirm("Confirm Changes");
-    
-        if (confirmation === true) {
-            task.title = domTaskTitle.value;
-    
-            dialogForm.close();
-            updateTasks(selectedProject);
-        } else {
-            dialogForm.close();
-        }
-    }
-}   
 
 export function deleteTask() {
     const dialogForm = document.querySelector("dialog");
@@ -268,6 +217,8 @@ export function deleteTask() {
     } else {
         dialogForm.close();
     }
+
+    //move to siteLogic? trying to declutter this file
 }
 
 export function completeTask(taskNum) {
@@ -293,7 +244,10 @@ export function completeTask(taskNum) {
     }
 
     updateTasks(selectedProject);
+
+    //move to siteLogic? trying to declutter this file
 }
 
-//put the due date under the details prompt
+
+
 //when the date comes (or is near possibly), change the color of the task to yellow or red depending on how far it is
