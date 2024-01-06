@@ -211,13 +211,15 @@ export function detailsPrompt() {
     const formElement = document.querySelector("form > ul");
 
     const taskDetails = elementCrafter.textAreaField("", "task-details");
+    
+    const taskDue = elementCrafter.dateField("Due:", "task-due");
 
     const submitButton = document.createElement("button");
     submitButton.type = "submit";
     submitButton.classList.add("confirm-details");
     submitButton.textContent = "Done";
 
-    formElement.append(taskDetails, submitButton);
+    formElement.append(taskDetails, taskDue, submitButton);
 }
 
 export function settingsPrompt() {
