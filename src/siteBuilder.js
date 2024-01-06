@@ -1,17 +1,9 @@
 import icon1 from "./svgs/format-list-bulleted-square.svg";
 import icon2 from "./svgs/information-variant-circle-outline.svg";
 import icon3 from "./svgs/archive.svg";
-import icon4 from "./svgs/calendar.svg";
-import icon5 from "./svgs/calendar-arrow-right.svg";
 import icon6 from "./svgs/star.svg";
 import icon7 from "./svgs/check-bold.svg";
-import icon8 from "./svgs/message-text-outline.svg";
-import icon9 from "./svgs/star-outline.svg";
-import icon10 from "./svgs/cog-outline.svg";
 import icon11 from "./svgs/close-circle.svg"
-
-//solve this when you're done with mostly everything
-//ill probably represent the svgs folder as an array in sep. module
 
 import elementCrafter from "./craftingTable";
 
@@ -254,6 +246,43 @@ export function renamePrompt() {
     const submitButton = document.createElement("button");
     submitButton.type = "submit";
     submitButton.classList.add("confirm-new-task-title");
+    submitButton.textContent = "Done";
+
+    formElement.append(newName, submitButton);
+}
+
+export function projectSettingsPrompt() {
+    const dialogSelector = document.querySelector("dialog");
+    dialogSelector.showModal();
+
+    clearFormChangeTitle("Project Settings");
+    const formElement = document.querySelector("form > ul");
+
+    const renameProject = document.createElement("button");
+    renameProject.type = "button";
+    renameProject.classList.add("rename-project");
+    renameProject.textContent = "Rename";
+
+    const deleteProject = document.createElement("button");
+    deleteProject.type = "button";
+    deleteProject.classList.add("delete-project");
+    deleteProject.textContent = "Delete";
+    
+    formElement.append(renameProject, deleteProject);
+}
+
+export function projectRenamePrompt() {
+    const dialogSelector = document.querySelector("dialog");
+    dialogSelector.showModal();
+
+    const formElement = document.querySelector("form > ul");
+    formElement.replaceChildren();
+
+    const newName = elementCrafter.textField("Title:", "new-project-title");
+
+    const submitButton = document.createElement("button");
+    submitButton.type = "submit";
+    submitButton.classList.add("confirm-new-project-title");
     submitButton.textContent = "Done";
 
     formElement.append(newName, submitButton);
