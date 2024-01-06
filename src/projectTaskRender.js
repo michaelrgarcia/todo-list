@@ -1,4 +1,5 @@
 import { createProject, createTask, getProjects } from "./siteLogic";
+import { getTaskFromDialog } from "./otherDomLogic";
 import elementCrafter from "./craftingTable";
 
 const projects = getProjects();
@@ -30,17 +31,6 @@ export function getTask(task) {
     const desiredTask = projects[projectNumber].tasks[taskNumber];
 
     return desiredTask;
-}
-
-export function getTaskFromDialog() {
-    const dialogForm = document.querySelector("dialog");
-
-    const taskNum = dialogForm.dataset.tnum;
-    const task = getTask(taskNum);
-
-    return task;
-
-    //dom related module?
 }
 
 export function updateProjects() {
