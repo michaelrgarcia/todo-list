@@ -8,8 +8,6 @@ const allTaskProject = projects[0];
 const starredTasks = projects[1];
 const completedTasks = projects[2];
 
-
-
 export function getTask(task) {
     const fullNumber = task.split(".");
     const projectNumber = fullNumber[0];
@@ -155,34 +153,6 @@ export function displayDate(taskNum) {
     dialogForm.setAttribute("data-tnum", taskNum);
 
     domTaskDue.value = task.dueDate;
-}
-
-export function deleteTask() {
-    const dialogForm = document.querySelector("dialog");
-
-    const task = getTaskFromDialog();
-    const project = projects[task.ppIndex];
-
-    let confirmation = confirm("Confirm Delete Task");
-
-    if (confirmation === true) {
-        projects.forEach((project) => {
-            project.tasks.forEach((taskToDelete) => {
-                if (taskToDelete.number === task.number && 
-                    taskToDelete.ppIndex === task.ppIndex) {
-                    project.tasks.splice(taskToDelete.number, 1);
-                }
-            });
-        });
-
-        updateTasks(project);
-
-        dialogForm.close();
-    } else {
-        dialogForm.close();
-    }
-
-    //move to siteLogic? trying to declutter this file
 }
 
 export function completeTask(taskNum) {

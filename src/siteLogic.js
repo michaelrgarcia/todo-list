@@ -1,4 +1,5 @@
 import { updateTasks, domProjectSwitch, getTask } from "./projectTaskRender";
+import { getTaskFromDialog } from "./otherDomLogic";
 
 const projects = [];
 
@@ -52,6 +53,32 @@ export function starTask(taskNum) {
     }
 
     updateTasks(selectedProject);
+}
+
+export function deleteTask() {
+    const dialogForm = document.querySelector("dialog");
+
+    const task = getTaskFromDialog();
+    const project = projects[task.ppIndex];
+
+    let confirmation = confirm("Confirm Delete Task");
+
+    if (confirmation === true) {
+        projects.forEach((project) => {
+            project.tasks.forEach((taskToDelete) => {
+                if (taskToDelete.number === task.number && 
+                    taskToDelete.ppIndex === task.ppIndex) {
+                    project.tasks.splice(taskToDelete.number, 1);
+                }
+            });
+        });
+
+        updateTasks(project);
+
+        dialogForm.close();
+    } else {
+        dialogForm.close();
+    }
 }
 
 
