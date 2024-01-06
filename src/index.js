@@ -1,5 +1,5 @@
 import { header, main, dialog, addTaskPrompt, addProjectPrompt, detailsPrompt, settingsPrompt, renamePrompt, closeDialog } from "./siteBuilder.js";
-import { updateProjects, domCreateTask, selectProject, domCreateProject, displayDetails, submitDetails, starTask, displayTaskTitle, changeDialogTaskNum, submitTaskTitle, deleteTask, completeTask, displayCompletedTaskDetails } from "./projectTaskRender.js";
+import { updateProjects, domCreateTask, selectProject, domCreateProject, displayDetails, submitDetails, starTask, displayTaskTitle, changeDialogTaskNum, submitTaskTitle, deleteTask, completeTask, displayCompletedTaskDetails, displayDate } from "./projectTaskRender.js";
 
 const content = document.getElementById("content");
 content.append(header(), main(), dialog());
@@ -42,6 +42,7 @@ window.addEventListener("click", function(event) {
         event.target.className === "svg notes completed") {
         detailsPrompt();
         displayDetails(domTask);
+        displayDate(domTask);
     }
     if (event.target.className === "confirm-details") {
         submitDetails();
