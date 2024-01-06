@@ -1,4 +1,4 @@
-import { header, main, dialog, addTaskPrompt, addProjectPrompt, detailsPrompt, settingsPrompt, renamePrompt } from "./siteBuilder.js";
+import { header, main, dialog, addTaskPrompt, addProjectPrompt, detailsPrompt, settingsPrompt, renamePrompt, projectSettingsPrompt, projectRenamePrompt } from "./siteBuilder.js";
 import { updateProjects, domCreateTask, domCreateProject, displayDetails, displayDate, displayTaskTitle } from "./projectTaskRender.js";
 import { changeDialogTaskNum, submitDetails, submitTaskTitle, closeDialog } from "./otherDomLogic.js";
 import { selectProject, starTask, deleteTask, completeTask } from "./siteLogic.js";
@@ -69,13 +69,9 @@ window.addEventListener("click", function(event) {
     if (event.target.className === "task-check") {
         completeTask(domTask);
     }
-});
-
-window.addEventListener("mouseover", function(event) {
-    if (event.target.dataset.pnum || 
-        event.target.parentNode.dataset.pnum) {
-        //showProjectOptions()
-        //will probably add a class called "show". updateProjects will handle the actual showing of the icon buttons that allow the user to access the settings
+    if (event.target.className === "svg project-settings") {
+        event.stopPropagation();
+        projectSettingsPrompt();
     }
 });
 
