@@ -51,7 +51,8 @@ header > img:hover,
 nav div > ul > button:hover,
 #add-project:hover,
 #add-task:hover,
-.task-config img:hover {
+.task-config img:hover,
+#projects-menu button .project-settings:hover {
     background-color: #8282823a;
 
     border-radius: 5px;
