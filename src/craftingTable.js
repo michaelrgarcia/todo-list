@@ -20,15 +20,20 @@ function domProjectCreator(title, index) {
     project.setAttribute("data-pnum", index);
     project.type = "button";
 
+    let projectInfo = document.createElement("div");
+    projectInfo.classList.add("project-info")
+
     let projectTitle = document.createElement("p");
     projectTitle.textContent = title;
 
     let projectIcon = iconCreator(icon1);
 
-    let settings = iconCreator(icon13);
-    settings.classList.add("project-settings", "hide");
+    projectInfo.append(projectIcon, projectTitle);
 
-    project.append(projectIcon, projectTitle, settings);
+    let settings = iconCreator(icon13);
+    settings.classList.add("project-settings");
+
+    project.append(projectInfo, settings);
     projectsMenu.append(project);
 }
 
