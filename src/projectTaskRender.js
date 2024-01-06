@@ -132,6 +132,12 @@ export function displayDetails(taskNum) {
 
     const task = getTask(taskNum);
 
+    if (task.completed) {
+        domTaskDetails.setAttribute("readonly", "");
+    } else if (!task.completed) {
+        domTaskDetails.removeAttribute("readonly");
+    }
+
     dialogForm.setAttribute("data-tnum", taskNum);
 
     domTaskDetails.textContent = task.details;
