@@ -3,6 +3,7 @@ import icon8 from "./svgs/message-text-outline.svg";
 import icon9 from "./svgs/star-outline.svg";
 import icon10 from "./svgs/cog-outline.svg";
 import icon12 from "./svgs/star.svg"; 
+import icon13 from "./svgs/cog.svg";
 import { dialog } from "./siteBuilder";
 
 function iconCreator(path) {
@@ -24,7 +25,10 @@ function domProjectCreator(title, index) {
 
     let projectIcon = iconCreator(icon1);
 
-    project.append(projectIcon, projectTitle);
+    let settings = iconCreator(icon13);
+    settings.classList.add("project-settings", "hide");
+
+    project.append(projectIcon, projectTitle, settings);
     projectsMenu.append(project);
 }
 
@@ -79,9 +83,6 @@ function domTaskCreator(title, projectName, projectSwitchName, num, parentIndex,
 
     task.append(taskInfo, taskSettings);
     taskMenu.append(task);
-
-    //need to store description, dueDate, starred, notes somewhere
-    //maybe in its own dialog form
 }
 
 function domCompletedTaskCreator(title, projectName, parentIndex, taskNum, details) {
