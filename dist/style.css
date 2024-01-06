@@ -359,6 +359,10 @@ textarea {
     margin-top: 30px;
 }
 
+#task-details:read-only:hover {
+    cursor: default;
+}
+
 @media (max-width: 930px) {
     main {
         flex-direction: column;
