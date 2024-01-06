@@ -1,4 +1,4 @@
-import { updateTasks, domProjectSwitch } from "./projectTaskRender";
+import { updateTasks, domProjectSwitch, getTask } from "./projectTaskRender";
 
 const projects = [];
 
@@ -36,8 +36,22 @@ export function selectProject(projectNum) {
     domProjectSwitch(projectToSelect);
     
     updateTasks(projectToSelect);
+}
 
-    //sitelogic?
+export function starTask(taskNum) {
+    const task = getTask(taskNum);
+
+    const selectedProject = projects.find((project) => project.selected === true);
+
+    if (task.starred) {
+        task.starred = false;
+        starredTasks.tasks.splice(task.number, 1);
+    } else {
+        task.starred = true;
+        starredTasks.tasks.push(task);
+    }
+
+    updateTasks(selectedProject);
 }
 
 

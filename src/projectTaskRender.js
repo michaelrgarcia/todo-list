@@ -157,24 +157,6 @@ export function displayDate(taskNum) {
     domTaskDue.value = task.dueDate;
 }
 
-export function starTask(taskNum) {
-    const task = getTask(taskNum);
-
-    const selectedProject = projects.find((project) => project.selected === true);
-
-    if (task.starred) {
-        task.starred = false;
-        starredTasks.tasks.splice(task.number, 1);
-    } else {
-        task.starred = true;
-        starredTasks.tasks.push(task);
-    }
-
-    updateTasks(selectedProject);
-
-    //move to siteLogic? trying to declutter this file
-}
-
 export function deleteTask() {
     const dialogForm = document.querySelector("dialog");
 
