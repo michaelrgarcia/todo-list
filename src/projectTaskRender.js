@@ -57,7 +57,7 @@ export function updateTasks(project) {
     const tasksMenu = document.getElementById("tasks");
     tasksMenu.replaceChildren();
 
-    project.tasks.forEach((task) => {
+    project.tasks.forEach((task, index) => {
         const parentIndex = task.ppIndex;
         const taskIndex = projects[parentIndex].tasks.findIndex((desiredTask) => desiredTask.number === task.number);
 
@@ -75,7 +75,7 @@ export function updateTasks(project) {
 
         if (task.completed) {
             console.log(task.details);
-            elementCrafter.domCompletedTask(task.title, task.parentProject, parentIndex, task.number);
+            elementCrafter.domCompletedTask(task.title, task.parentProject, 2, index);
         }
     });
 }
@@ -222,7 +222,7 @@ export function deleteTask() {
         projects.forEach((project) => {
             project.tasks.forEach((taskToDelete) => {
                 if (taskToDelete.number === task.number && 
-                    taskToDelete.ppIndex === task.ppIndex ) {
+                    taskToDelete.ppIndex === task.ppIndex) {
                         project.tasks.splice(taskToDelete.number, 1);
                 }
             });
@@ -248,8 +248,11 @@ export function completeTask(taskNum) {
 
         projects.forEach((project) => {
             if (project !== completedTasks) {
-                project.tasks.forEach((task) => {
-                    project.tasks.splice(task.number, 1);
+                project.tasks.forEach((desiredTask) => {
+                    if (task.ppIndex === desiredTask.ppIndex && 
+                        task.number === desiredTask.number) {
+                            project.tasks.splice(desiredTask.number, 1);
+                    }
                 });
             }
         });
@@ -257,13 +260,6 @@ export function completeTask(taskNum) {
 
     updateTasks(selectedProject);
 }
-
-//to do 
-
-//make the task check boxes work
-
-//add "completed" property
-//under the task checkbox function, push the selected task to the completed project
 
 //and... put the due date under the details prompt
 //when the date comes (or is near possibly), change the color of the task to yellow or red depending on how far it is
