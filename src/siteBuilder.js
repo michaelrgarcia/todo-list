@@ -258,8 +258,3 @@ export function renamePrompt() {
 
     formElement.append(newName, submitButton);
 }
-
-export function closeDialog() {
-    const dialogSelector = document.querySelector("dialog");
-    dialogSelector.close();
-}

@@ -1,6 +1,10 @@
 import { getTask, updateTasks } from "./projectTaskRender";
 import { getProjects } from "./siteLogic";
 
+export function closeDialog() {
+    const dialogSelector = document.querySelector("dialog");
+    dialogSelector.close();
+}
 
 export function getTaskFromDialog() {
     const dialogForm = document.querySelector("dialog");
