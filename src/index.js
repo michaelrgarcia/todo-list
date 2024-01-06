@@ -1,5 +1,5 @@
 import { header, main, dialog, addTaskPrompt, addProjectPrompt, detailsPrompt, settingsPrompt, renamePrompt, closeDialog } from "./siteBuilder.js";
-import { updateProjects, domCreateTask, selectProject, domCreateProject, displayDetails, submitDetails, starTask, displayTaskTitle, changeDialogTaskNum, submitTaskTitle, deleteTask, completeTask } from "./projectTaskRender.js";
+import { updateProjects, domCreateTask, selectProject, domCreateProject, displayDetails, submitDetails, starTask, displayTaskTitle, changeDialogTaskNum, submitTaskTitle, deleteTask, completeTask, displayCompletedTaskDetails } from "./projectTaskRender.js";
 
 const content = document.getElementById("content");
 content.append(header(), main(), dialog());
@@ -38,7 +38,8 @@ window.addEventListener("click", function(event) {
     if (event.target.className === "svg close-dialog") {
         closeDialog();
     }
-    if (event.target.className === "svg notes") {
+    if (event.target.className === "svg notes" ||
+        event.target.className === "svg notes completed") {
         detailsPrompt();
         displayDetails(domTask);
     }
@@ -64,10 +65,6 @@ window.addEventListener("click", function(event) {
     }
     if (event.target.className === "task-check") {
         completeTask(domTask);
-    }
-    if (event.target.className === "svg notes completed") {
-        detailsPrompt();
-        displayDetails(domTask);
     }
 }); 
 
