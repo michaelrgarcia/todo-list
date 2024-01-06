@@ -3,10 +3,7 @@ import { getTaskFromDialog } from "./otherDomLogic";
 import elementCrafter from "./craftingTable";
 
 const projects = getProjects();
-
 const allTaskProject = projects[0];
-const starredTasks = projects[1];
-const completedTasks = projects[2];
 
 export function getTask(task) {
     const fullNumber = task.split(".");
@@ -154,34 +151,5 @@ export function displayDate(taskNum) {
 
     domTaskDue.value = task.dueDate;
 }
-
-export function completeTask(taskNum) {
-    const task = getTask(taskNum);
-    const selectedProject = projects.find((project) => project.selected === true);
-
-    let confirmation = confirm("Confirm Complete Task");
-
-    if (confirmation === true) {
-        task.completed = true;
-        completedTasks.tasks.push(task);
-
-        projects.forEach((project) => {
-            if (project !== completedTasks) {
-                project.tasks.forEach((desiredTask) => {
-                    if (task.ppIndex === desiredTask.ppIndex && 
-                        task.number === desiredTask.number) {
-                        project.tasks.splice(desiredTask.number, 1);
-                    }
-                });
-            }
-        });
-    }
-
-    updateTasks(selectedProject);
-
-    //move to siteLogic? trying to declutter this file
-}
-
-
 
 //when the date comes (or is near possibly), change the color of the task to yellow or red depending on how far it is

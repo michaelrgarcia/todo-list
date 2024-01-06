@@ -81,5 +81,30 @@ export function deleteTask() {
     }
 }
 
+export function completeTask(taskNum) {
+    const task = getTask(taskNum);
+    const selectedProject = projects.find((project) => project.selected === true);
+
+    let confirmation = confirm("Confirm Complete Task");
+
+    if (confirmation === true) {
+        task.completed = true;
+        completedTasks.tasks.push(task);
+
+        projects.forEach((project) => {
+            if (project !== completedTasks) {
+                project.tasks.forEach((desiredTask) => {
+                    if (task.ppIndex === desiredTask.ppIndex && 
+                        task.number === desiredTask.number) {
+                        project.tasks.splice(desiredTask.number, 1);
+                    }
+                });
+            }
+        });
+    }
+
+    updateTasks(selectedProject);
+}
+
 
 

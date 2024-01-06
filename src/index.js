@@ -1,7 +1,7 @@
 import { header, main, dialog, addTaskPrompt, addProjectPrompt, detailsPrompt, settingsPrompt, renamePrompt } from "./siteBuilder.js";
-import { updateProjects, domCreateTask, domCreateProject, displayDetails, completeTask, displayDate, displayTaskTitle } from "./projectTaskRender.js";
+import { updateProjects, domCreateTask, domCreateProject, displayDetails, displayDate, displayTaskTitle } from "./projectTaskRender.js";
 import { changeDialogTaskNum, submitDetails, submitTaskTitle, closeDialog } from "./otherDomLogic.js";
-import { selectProject, starTask, deleteTask } from "./siteLogic.js";
+import { selectProject, starTask, deleteTask, completeTask } from "./siteLogic.js";
 
 const content = document.getElementById("content");
 content.append(header(), main(), dialog());
