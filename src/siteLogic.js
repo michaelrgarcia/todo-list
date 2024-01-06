@@ -2,7 +2,6 @@ import { updateTasks, domProjectSwitch, getTask } from "./projectTaskRender";
 import { getTaskFromDialog } from "./otherDomLogic";
 
 const projects = [];
-
 const allTaskProject = createProject("All Tasks", true);
 const starredTasks = createProject("Starred", false);
 const completedTasks = createProject("Completed", false);
@@ -59,21 +58,24 @@ export function deleteTask() {
     const dialogForm = document.querySelector("dialog");
 
     const task = getTaskFromDialog();
-    const project = projects[task.ppIndex];
+    const selectedProject = projects.find((project) => project.selected === true);
 
     let confirmation = confirm("Confirm Delete Task");
 
     if (confirmation === true) {
         projects.forEach((project) => {
-            project.tasks.forEach((taskToDelete) => {
-                if (taskToDelete.number === task.number && 
-                    taskToDelete.ppIndex === task.ppIndex) {
-                    project.tasks.splice(taskToDelete.number, 1);
-                }
-            });
+
+            if (project !== completedTasks) {
+                project.tasks.forEach((desiredTask) => {
+                    if (desiredTask.ppIndex === task.ppIndex && 
+                        desiredTask.number === task.number) {
+                        project.tasks.splice(desiredTask.number, 1);
+                    }
+                });
+            }
         });
 
-        updateTasks(project);
+        updateTasks(selectedProject);
 
         dialogForm.close();
     } else {
