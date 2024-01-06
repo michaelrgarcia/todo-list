@@ -17,14 +17,6 @@ export function changeDialogTaskNum(taskNum) {
     dialogForm.setAttribute("data-tnum", taskNum);
 }
 
-export function displayTaskTitle() {
-    const domTaskTitle = document.getElementById("new-task-title");
-
-    const task = getTaskFromDialog();
-
-    domTaskTitle.value = task.title;
-}
-
 export function submitDetails() {
     const dialogForm = document.querySelector("dialog");
     const domTaskDetails = document.getElementById("task-details");

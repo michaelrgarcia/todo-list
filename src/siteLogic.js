@@ -1,3 +1,5 @@
+import { updateTasks, domProjectSwitch } from "./projectTaskRender";
+
 const projects = [];
 
 const allTaskProject = createProject("All Tasks", true);
@@ -18,6 +20,24 @@ export function createProject(title, selected) {
 
 export function createTask(title, details, dueDate, starred, parentProject, number, ppIndex, completed) {
     return { title, details, dueDate, starred, parentProject, number, ppIndex, completed };
+}
+
+export function selectProject(projectNum) {
+    let projectToSelect = projects[projectNum];
+
+    projects.forEach((project) => {
+        if (project !== projectToSelect) {
+            project.selected = false;
+        } else {
+            project.selected = true;
+        }
+    });
+
+    domProjectSwitch(projectToSelect);
+    
+    updateTasks(projectToSelect);
+
+    //sitelogic?
 }
 
 

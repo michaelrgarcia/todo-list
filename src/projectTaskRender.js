@@ -8,20 +8,7 @@ const allTaskProject = projects[0];
 const starredTasks = projects[1];
 const completedTasks = projects[2];
 
-function domProjectSwitch(project) {
-    const addTaskBtn = document.getElementById("add-task");
-    const domProjectTitle = document.querySelector(".project-name");
 
-    const pIndex = projects.indexOf(project);
-    
-    if (pIndex < 3) {
-        addTaskBtn.style.display = "none";
-    } else {
-        addTaskBtn.style.display = "block";
-    }
-
-    domProjectTitle.textContent = project.title;
-}
 
 export function getTask(task) {
     const fullNumber = task.split(".");
@@ -102,22 +89,19 @@ export function domCreateProject() {
     }
 }
 
-export function selectProject(projectNum) {
-    let projectToSelect = projects[projectNum];
+export function domProjectSwitch(project) {
+    const addTaskBtn = document.getElementById("add-task");
+    const domProjectTitle = document.querySelector(".project-name");
 
-    projects.forEach((project) => {
-        if (project !== projectToSelect) {
-            project.selected = false;
-        } else {
-            project.selected = true;
-        }
-    });
-
-    domProjectSwitch(projectToSelect);
+    const pIndex = projects.indexOf(project);
     
-    updateTasks(projectToSelect);
+    if (pIndex < 3) {
+        addTaskBtn.style.display = "none";
+    } else {
+        addTaskBtn.style.display = "block";
+    }
 
-    //sitelogic?
+    domProjectTitle.textContent = project.title;
 }
 
 export function displayDetails(taskNum) {
@@ -135,6 +119,14 @@ export function displayDetails(taskNum) {
     dialogForm.setAttribute("data-tnum", taskNum);
 
     domTaskDetails.textContent = task.details;
+}
+
+export function displayTaskTitle() {
+    const domTaskTitle = document.getElementById("new-task-title");
+
+    const task = getTaskFromDialog();
+
+    domTaskTitle.value = task.title;
 }
 
 export function displayDate(taskNum) {
