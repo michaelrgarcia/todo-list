@@ -204,7 +204,7 @@ export function detailsPrompt() {
 
     const taskDetails = elementCrafter.textAreaField("", "task-details");
     
-    const taskDue = elementCrafter.dateField("Due:", "task-due");
+    const taskDue = elementCrafter.dateField("Due:", "task-due", "marginChange");
 
     const submitButton = document.createElement("button");
     submitButton.type = "submit";
