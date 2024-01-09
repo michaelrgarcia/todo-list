@@ -338,7 +338,8 @@ textarea {
 }
 
 .submit-project,
-.confirm-new-task-title {
+.confirm-new-task-title,
+.confirm-new-project-title {
     margin-top: 275px;
 }
 
