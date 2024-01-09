@@ -101,19 +101,42 @@ export function domProjectSwitch(project) {
 
 export function displayDetails(taskNum) {
     const domTaskDetails = document.getElementById("task-details");
+    const domTaskDue = document.getElementById("task-due");
     const dialogForm = document.querySelector("dialog");
 
     const task = getTask(taskNum);
 
-    if (task.completed) {
-        domTaskDetails.disabled = true;
-    } else if (!task.completed) {
-        domTaskDetails.disabled = false;
-    }
-
     dialogForm.setAttribute("data-tnum", taskNum);
 
-    domTaskDetails.textContent = task.details;
+    if (task.completed) {
+        domTaskDetails.disabled = true;
+        domTaskDue.disabled = true;
+    } else if (!task.completed) {
+        domTaskDetails.disabled = false;
+        domTaskDue.disabled = false;
+    }
+
+    function textAreaStuff() {
+        domTaskDetails.textContent = task.details;
+    }
+
+    function dueDateStuff() {
+        const confirmDetails = document.querySelector(".confirm-details");
+        const inputParent = domTaskDue.parentNode;
+        
+        if (task.dueDate === "") {
+            inputParent.style.display = "none";
+            confirmDetails.style.marginTop = "29%";
+        } else {
+            inputParent.style.display = "block";
+            confirmDetails.style.marginTop = "45px";
+        }
+    
+        domTaskDue.value = task.dueDate;
+    }
+
+    textAreaStuff();
+    dueDateStuff();
 }
 
 export function displayTaskTitle() {
@@ -122,34 +145,6 @@ export function displayTaskTitle() {
     const task = getTaskFromDialog();
 
     domTaskTitle.value = task.title;
-}
-
-export function displayDate(taskNum) {
-    const domTaskDue = document.getElementById("task-due");
-    const inputParent = domTaskDue.parentNode;
-    const confirmDetails = document.querySelector(".confirm-details");
-
-    const dialogForm = document.querySelector("dialog");
-
-    const task = getTask(taskNum);
-
-    if (task.dueDate === "") {
-        inputParent.style.display = "none";
-        confirmDetails.style.marginTop = "29%";
-    } else {
-        inputParent.style.display = "block";
-        confirmDetails.style.marginTop = "45px";
-    }
-
-    if (task.completed) {
-        domTaskDue.disabled = true;
-    } else if (!task.completed) {
-        domTaskDue.disabled = false;
-    }
-
-    dialogForm.setAttribute("data-tnum", taskNum);
-
-    domTaskDue.value = task.dueDate;
 }
 
 //when the date comes (or is near possibly), change the color of the task to yellow or red depending on how far it is

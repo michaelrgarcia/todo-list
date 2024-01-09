@@ -1,5 +1,5 @@
 import { header, main, dialog, addTaskPrompt, addProjectPrompt, detailsPrompt, settingsPrompt, renamePrompt, projectSettingsPrompt, projectRenamePrompt } from "./siteBuilder.js";
-import { updateProjects, domCreateTask, domCreateProject, displayDetails, displayDate, displayTaskTitle } from "./projectTaskRender.js";
+import { updateProjects, domCreateTask, domCreateProject, displayDetails, displayTaskTitle } from "./projectTaskRender.js";
 import { changeDialogTaskNum, submitDetails, submitTaskTitle, closeDialog } from "./otherDomLogic.js";
 import { selectProject, starTask, deleteTask, completeTask } from "./siteLogic.js";
 
@@ -44,7 +44,6 @@ window.addEventListener("click", function(event) {
         event.target.className === "svg notes completed") {
         detailsPrompt();
         displayDetails(domTask);
-        displayDate(domTask);
     }
     if (event.target.className === "confirm-details") {
         submitDetails();
