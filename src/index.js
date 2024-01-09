@@ -1,6 +1,6 @@
 import { header, main, dialog, addTaskPrompt, addProjectPrompt, detailsPrompt, settingsPrompt, renamePrompt, projectSettingsPrompt, projectRenamePrompt } from "./siteBuilder.js";
 import { updateProjects, domCreateTask, domCreateProject, displayDetails, displayDate, displayTaskTitle } from "./projectTaskRender.js";
-import { changeDialogTaskNum, submitDetails, submitTaskTitle, closeDialog, submitDueDate } from "./otherDomLogic.js";
+import { changeDialogTaskNum, submitDetails, submitTaskTitle, closeDialog } from "./otherDomLogic.js";
 import { selectProject, starTask, deleteTask, completeTask } from "./siteLogic.js";
 
 const content = document.getElementById("content");
@@ -48,7 +48,6 @@ window.addEventListener("click", function(event) {
     }
     if (event.target.className === "confirm-details") {
         submitDetails();
-        submitDueDate();
     }
     if (event.target.className === "svg star") {
         starTask(domTask);

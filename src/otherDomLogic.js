@@ -24,22 +24,22 @@ export function changeDialogTaskNum(taskNum) {
 export function submitDetails() {
     const dialogForm = document.querySelector("dialog");
     const domTaskDetails = document.getElementById("task-details");
+    const domTaskDueDate = document.getElementById("task-due");
 
     const task = getTaskFromDialog();
 
-    if (!task.completed) {
-        if (task.details !== domTaskDetails.value) {
-            let confirmation = confirm("Confirm Changes");
+    if (task.details !== domTaskDetails.value || task.dueDate !== domTaskDueDate.value) {
+        let confirmation = confirm("Confirm Changes");
     
-            if (confirmation === true) {
-                task.details = domTaskDetails.value;
+        if (confirmation === true) {
+            task.details = domTaskDetails.value;
+            task.dueDate = domTaskDueDate.value;
     
-                dialogForm.close();
-            }
+            dialogForm.close();
+        }
         } else {
             dialogForm.close();
         }
-    }
 }
 
 export function submitTaskTitle() {
