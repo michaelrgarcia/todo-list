@@ -1,6 +1,6 @@
 import { header, main, dialog, addTaskPrompt, addProjectPrompt, detailsPrompt, settingsPrompt, renamePrompt, projectSettingsPrompt, projectRenamePrompt } from "./siteBuilder.js";
-import { updateProjects, domCreateTask, domCreateProject, displayDetails, displayTaskTitle } from "./projectTaskRender.js";
-import { changeDialogTaskNum, submitDetails, submitTaskTitle, closeDialog } from "./otherDomLogic.js";
+import { updateProjects, domCreateTask, domCreateProject, displayDetails, displayTaskTitle, displayProjectTitle } from "./projectTaskRender.js";
+import { changeDialogTaskNum, submitDetails, submitTaskTitle, closeDialog, changeDialogProjectNum } from "./otherDomLogic.js";
 import { selectProject, starTask, deleteTask, completeTask } from "./siteLogic.js";
 
 const content = document.getElementById("content");
@@ -10,6 +10,7 @@ selectProject(0); //selects "All Tasks" project
 
 window.addEventListener("click", function(event) {
     let domTask = event.target.parentNode.parentNode.dataset.tnum;
+    let domProject = event.target.parentNode.dataset.pnum;
 
     if (event.target.className === "all-tasks" || event.target.parentNode.className === "all-tasks") {
         selectProject(0);
@@ -71,9 +72,11 @@ window.addEventListener("click", function(event) {
     if (event.target.className === "svg project-settings") {
         event.stopPropagation();
         projectSettingsPrompt();
+        changeDialogProjectNum(domProject);
     }
     if (event.target.className === "rename-project") {
-        //renameProject();
+        projectRenamePrompt();
+        displayProjectTitle();
     }
     if (event.target.className === "delete-project") {
         //deleteProject();
