@@ -52,7 +52,8 @@ nav div > ul > button:hover,
 #add-project:hover,
 #add-task:hover,
 .task-config img:hover,
-#projects-menu button .project-settings:hover {
+#projects-menu button .project-settings:hover,
+.back:hover {
     background-color: #8282823a;
 
     border-radius: 5px;
@@ -101,7 +102,8 @@ nav div > ul {
 
 nav div > ul > button,
 #add-project,
-#add-task {
+#add-task,
+.back {
     padding: 10px;
     color: #111827;
 }
@@ -126,7 +128,8 @@ nav div > ul > button img {
 }
 
 #add-project,
-#add-task {
+#add-task,
+.back {
     background: none;
     color: #374151;
 
@@ -340,7 +343,7 @@ textarea {
 .submit-project,
 .confirm-new-task-title,
 .confirm-new-project-title {
-    margin-top: 275px;
+    margin-top: 245px;
 }
 
 .confirm-details {
