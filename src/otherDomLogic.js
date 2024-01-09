@@ -2,8 +2,9 @@ import { getTask, updateTasks } from "./projectTaskRender";
 import { getProjects } from "./siteLogic";
 
 export function closeDialog() {
-    const dialogSelector = document.querySelector("dialog");
-    dialogSelector.close();
+    const dialogForm = document.querySelector("dialog");
+
+    dialogForm.close();
 }
 
 export function getTaskFromDialog() {
@@ -15,10 +16,28 @@ export function getTaskFromDialog() {
     return task;
 }
 
+export function getProjectFromDialog() {
+    const dialogForm = document.querySelector("dialog");
+
+    const projectNum = dialogForm.dataset.pnum;
+    const projects = getProjects();
+    const project = projects[projectNum];
+
+    return project;
+}
+
 export function changeDialogTaskNum(taskNum) {
     const dialogForm = document.querySelector("dialog");
 
     dialogForm.setAttribute("data-tnum", taskNum);
+    dialogForm.removeAttribute("data-pnum");
+}
+
+export function changeDialogProjectNum(pNum) {
+    const dialogForm = document.querySelector("dialog");
+
+    dialogForm.setAttribute("data-pnum", pNum);
+    dialogForm.removeAttribute("data-tnum");
 }
 
 export function submitDetails() {
@@ -64,4 +83,9 @@ export function submitTaskTitle() {
             dialogForm.close();
         }
     }
-}   
+}
+
+export function confirmNewProjectName() {
+    const dialogForm = document.querySelector("dialog");
+    const domTaskTitle = document.getElementById("new-task-title");
+}
