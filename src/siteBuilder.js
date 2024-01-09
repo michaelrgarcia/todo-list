@@ -280,10 +280,15 @@ export function projectRenamePrompt() {
 
     const newName = elementCrafter.textField("Title:", "new-project-title");
 
+    const backButton = document.createElement("button");
+    backButton.type = "button";
+    backButton.classList.add("back");
+    backButton.textContent = "Back";
+
     const submitButton = document.createElement("button");
     submitButton.type = "submit";
     submitButton.classList.add("confirm-new-project-title");
     submitButton.textContent = "Done";
 
-    formElement.append(newName, submitButton);
+    formElement.append(newName, backButton, submitButton);
 }
