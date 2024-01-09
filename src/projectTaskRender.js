@@ -1,5 +1,5 @@
 import { createProject, createTask, getProjects } from "./siteLogic";
-import { getTaskFromDialog } from "./otherDomLogic";
+import { getTaskFromDialog, getProjectFromDialog } from "./otherDomLogic";
 import elementCrafter from "./craftingTable";
 
 const projects = getProjects();
@@ -145,6 +145,14 @@ export function displayTaskTitle() {
     const task = getTaskFromDialog();
 
     domTaskTitle.value = task.title;
+}
+
+export function displayProjectTitle() {
+    const domProjectTitle = document.getElementById("new-project-title");
+
+    const project = getProjectFromDialog();
+
+    domProjectTitle.value = project.title;
 }
 
 //when the date comes (or is near possibly), change the color of the task to yellow or red depending on how far it is
