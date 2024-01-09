@@ -164,14 +164,19 @@ function bigTextArea(labelText, givenId) {
     return mainElement;
 }
 
-function dueDateField(labelText, givenId) {
+function dueDateField(labelText, givenId, marginChange) {
     const mainElement = document.createElement("li");
 
     const label = document.createElement("label");
     label.htmlFor = givenId;
     label.textContent = labelText;
     label.style.alignSelf = "center"
-    label.style.marginRight = "-15px";
+
+    if (marginChange) {
+        label.style.marginRight = "5px";
+    } else {
+        label.style.marginRight = "-15px";
+    }
 
     const input = document.createElement("input");
     input.id = givenId;
@@ -209,8 +214,8 @@ function elementCrafter(param1, param2, param3, param4, param5, param6) {
         return newTextAreaField;
     }
 
-    const dateField = function(param1, param2) {
-        let newDateField = dueDateField(param1, param2);
+    const dateField = function(param1, param2, param3) {
+        let newDateField = dueDateField(param1, param2, param3);
         return newDateField;
     }
 
