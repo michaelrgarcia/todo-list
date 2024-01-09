@@ -1,6 +1,6 @@
 import { header, main, dialog, addTaskPrompt, addProjectPrompt, detailsPrompt, settingsPrompt, renamePrompt, projectSettingsPrompt, projectRenamePrompt } from "./siteBuilder.js";
 import { updateProjects, domCreateTask, domCreateProject, displayDetails, displayTaskTitle, displayProjectTitle } from "./projectTaskRender.js";
-import { changeDialogTaskNum, submitDetails, submitTaskTitle, closeDialog, changeDialogProjectNum } from "./otherDomLogic.js";
+import { changeDialogTaskNum, submitDetails, submitTaskTitle, closeDialog, changeDialogProjectNum, confirmNewProjectName } from "./otherDomLogic.js";
 import { selectProject, starTask, deleteTask, completeTask } from "./siteLogic.js";
 
 const content = document.getElementById("content");
@@ -62,6 +62,9 @@ window.addEventListener("click", function(event) {
     }
     if (event.target.className === "confirm-new-task-title") {
         submitTaskTitle();
+    }
+    if (event.target.className === "confirm-new-project-title") {
+        confirmNewProjectName();
     }
     if (event.target.className === "delete-task") {
         deleteTask();
