@@ -19,6 +19,7 @@ export function header() {
     const mainElement = document.createElement("header");
 
     const dropdown = elementCrafter.icon(icon1);
+    dropdown.classList.add("toggle-nav");
 
     const text = document.createElement("p");
     text.id = "header-text"
