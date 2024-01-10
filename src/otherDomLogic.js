@@ -109,3 +109,13 @@ export function confirmNewProjectName() {
         }
     }
 }
+
+export function toggleDropdown() {
+    const dropdown = document.querySelector("nav");
+
+    if (dropdown.style.display !== "none") {
+        dropdown.style.display = "none";
+    } else if (dropdown.style.display !== "block") {
+        dropdown.style.display = "block";
+    }
+}
