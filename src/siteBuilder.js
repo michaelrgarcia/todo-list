@@ -26,6 +26,7 @@ export function header() {
     text.textContent = "To-Do List";
 
     const info = elementCrafter.icon(icon2);
+    info.classList.add("site-info");
 
     mainElement.append(dropdown, text, info);
 
@@ -287,4 +288,8 @@ export function projectRenamePrompt() {
     submitButton.textContent = "Done";
 
     formElement.append(newName, submitButton);
+}
+
+export function infoPrompt() {
+    const 
 }
