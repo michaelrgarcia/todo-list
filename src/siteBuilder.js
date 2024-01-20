@@ -264,13 +264,8 @@ export function projectSettingsPrompt() {
     renameProject.type = "button";
     renameProject.classList.add("rename-project");
     renameProject.textContent = "Rename";
-
-    const deleteProject = document.createElement("button");
-    deleteProject.type = "button";
-    deleteProject.classList.add("delete-project");
-    deleteProject.textContent = "Delete";
     
-    formElement.append(renameProject, deleteProject);
+    formElement.append(renameProject);
 }
 
 export function projectRenamePrompt() {
@@ -291,5 +286,11 @@ export function projectRenamePrompt() {
 }
 
 export function infoPrompt() {
-    const 
+    const dialogSelector = document.querySelector("dialog");
+    dialogSelector.showModal();
+
+    clearFormChangeTitle("Info");
+
+    const formElement = document.querySelector("form > ul");
+    formElement.replaceChildren();
 }
