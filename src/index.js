@@ -1,4 +1,4 @@
-import { header, main, dialog, addTaskPrompt, addProjectPrompt, detailsPrompt, settingsPrompt, renamePrompt, projectSettingsPrompt, projectRenamePrompt } from "./siteBuilder.js";
+import { header, main, dialog, addTaskPrompt, addProjectPrompt, detailsPrompt, settingsPrompt, renamePrompt, projectSettingsPrompt, projectRenamePrompt, infoPrompt } from "./siteBuilder.js";
 import { updateProjects, domCreateTask, domCreateProject, displayDetails, displayTaskTitle, displayProjectTitle } from "./projectTaskRender.js";
 import { changeDialogTaskNum, submitDetails, submitTaskTitle, closeDialog, changeDialogProjectNum, confirmNewProjectName, toggleDropdown } from "./otherDomLogic.js";
 import { selectProject, starTask, deleteTask, completeTask } from "./siteLogic.js";
@@ -81,8 +81,8 @@ window.addEventListener("click", function(event) {
         projectRenamePrompt();
         displayProjectTitle();
     }
-    if (event.target.className === "delete-project") {
-        //deleteProject();
+    if (event.target.className === "svg site-info") {
+        infoPrompt();
     }
     if (event.target.className === "svg toggle-nav") {
         event.stopPropagation();
