@@ -10,7 +10,9 @@ const userProjects = JSON.parse(localStorage.getItem("user-projects"));
 
 projects.push(allTaskProject, starredTasks, completedTasks);
 
-projects.push(...userProjects);
+if (userProjects) {
+    projects.push(...userProjects);
+}
 
 export function getProjects() {
     return projects;
