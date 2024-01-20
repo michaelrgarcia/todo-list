@@ -5,6 +5,8 @@ import elementCrafter from "./craftingTable";
 const projects = getProjects();
 const allTaskProject = projects[0];
 
+const userProjects = JSON.parse(localStorage.getItem("user-projects"));
+
 export function getTask(task) {
     const fullNumber = task.split(".");
     const projectNumber = fullNumber[0];
@@ -79,6 +81,11 @@ export function domCreateProject() {
     if (title.value !== "") {
         const newProject = createProject(title.value, false);
         projects.push(newProject);
+
+        localStorage.setItem(`${newProject.title}`, JSON.stringify(newProject));
+        userProjects.push(newProject);
+        localStorage.setItem("user-projects", JSON.stringify(userProjects));
+
         dialogForm.close();
         updateProjects();
     }
