@@ -6,7 +6,11 @@ const allTaskProject = createProject("All Tasks", true);
 const starredTasks = createProject("Starred", false);
 const completedTasks = createProject("Completed", false);
 
+const userProjects = JSON.parse(localStorage.getItem("user-projects"));
+
 projects.push(allTaskProject, starredTasks, completedTasks);
+
+projects.push(...userProjects);
 
 export function getProjects() {
     return projects;
