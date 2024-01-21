@@ -51,6 +51,9 @@ export function updateTasks(project) {
         if (task.completed) {
             elementCrafter.domCompletedTask(task.title, task.parentProject, 2, index);
         }
+
+        localStorage.setItem(`${project.title}-tasks`, JSON.stringify(project.tasks));
+        localStorage.setItem(`${allTaskProject.title}-tasks`, JSON.stringify(allTaskProject.tasks));
     });
 }
 
@@ -167,4 +170,3 @@ export function displayProjectTitle() {
     domProjectTitle.value = project.title;
 }
 
-//when the date comes (or is near possibly), change the color of the task to yellow or red depending on how far it is
