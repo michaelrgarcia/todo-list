@@ -72,15 +72,6 @@ window.addEventListener("click", function(event) {
     if (event.target.className === "task-check") {
         completeTask(domTask);
     }
-    if (event.target.className === "svg project-settings") {
-        event.stopPropagation();
-        projectSettingsPrompt();
-        changeDialogProjectNum(domProject);
-    }
-    if (event.target.className === "rename-project") {
-        projectRenamePrompt();
-        displayProjectTitle();
-    }
     if (event.target.className === "svg site-info") {
         infoPrompt();
     }
