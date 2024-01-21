@@ -89,6 +89,7 @@ export function deleteTask() {
                     if (desiredTask.ppIndex === task.ppIndex && 
                         desiredTask.number === task.number) {
                         project.tasks.splice(desiredTask.number, 1);
+                        localStorage.setItem(`${project.title}-tasks`, JSON.stringify(project.tasks));
                     }
                 });
             }
