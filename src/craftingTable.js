@@ -30,10 +30,7 @@ function domProjectCreator(title, index) {
 
     projectInfo.append(projectIcon, projectTitle);
 
-    let settings = iconCreator(icon13);
-    settings.classList.add("project-settings");
-
-    project.append(projectInfo, settings);
+    project.append(projectInfo);
     projectsMenu.append(project);
 }
 
