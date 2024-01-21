@@ -6,7 +6,6 @@ const projects = getProjects();
 const allTaskProject = projects[0];
 
 const userProjectsArray = getUserProjects();
-//const allTaskArchive = JSON.parse(localStorage.getItem("all-tasks-archive"));
 
 export function getTask(task) {
     const fullNumber = task.split(".");
@@ -67,17 +66,12 @@ export function domCreateTask() {
 
     if (title.value !== "") {
         const newTask = createTask(title.value, details.value, due.value, false, selectedProject.title, "0", selectedProjectIndex, false);
+        
         selectedProject.tasks.push(newTask);
-
-        //localStorage.setItem(`${newTask.title}`, JSON.stringify(newTask));
-        //allTaskArchive.push(newTask);
-        //localStorage.setItem("all-tasks-archive", JSON.stringify(newTask));
+        localStorage.setItem(`${selectedProject.title}-tasks`, JSON.stringify(selectedProject.tasks));
 
         allTaskProject.tasks.push(newTask);
-
-        //localStorage.setItem(`${newTask.title}`, JSON.stringify(newTask));
-        //allTaskArchive.push(newTask);
-        //localStorage.setItem("all-tasks-archive", JSON.stringify(newTask));
+        localStorage.setItem(`${allTaskProject.title}-tasks`, JSON.stringify(allTaskProject.tasks));
 
         dialogForm.close();
         updateTasks(selectedProject);
