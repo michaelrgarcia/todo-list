@@ -6,16 +6,21 @@ const allTaskProject = createProject("All Tasks", true);
 const starredTasks = createProject("Starred", false);
 const completedTasks = createProject("Completed", false);
 
-const userProjects = JSON.parse(localStorage.getItem("user-projects"));
+const userProjectsArray = [];
+const storedUserProjects = localStorage.getItem("user-projects");
 
 projects.push(allTaskProject, starredTasks, completedTasks);
 
-if (userProjects) {
-    projects.push(...userProjects);
+if (userProjectsArray && storedUserProjects) {
+    projects.push(...JSON.parse(storedUserProjects));
 }
 
 export function getProjects() {
     return projects;
+}
+
+export function getUserProjects() {
+    return userProjectsArray;
 }
 
 export function createProject(title, selected) {
