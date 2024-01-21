@@ -1,4 +1,4 @@
-import { domProjectSwitch, getTask, updateProjects, updateTasks } from "./projectTaskRender";
+import { getTask, updateTasks } from "./projectTaskRender";
 import { getProjects } from "./siteLogic";
 
 export function closeDialog() {
@@ -79,31 +79,6 @@ export function submitTaskTitle() {
     
             dialogForm.close();
             updateTasks(selectedProject);
-        } else {
-            dialogForm.close();
-        }
-    }
-}
-
-export function confirmNewProjectName() {
-    const dialogForm = document.querySelector("dialog");
-    const domProjectTitle = document.getElementById("new-project-title");
-
-    const project = getProjectFromDialog();
-    
-    if (project.title !== domProjectTitle.value) {
-        let confirmation = confirm("Confirm Changes");
-    
-        if (confirmation === true) {
-            project.title = domProjectTitle.value;
-    
-            dialogForm.close();
-            updateProjects();
-            domProjectSwitch(project);
-            
-            project.tasks.forEach((task) => {
-                task.parentProject = project.title;
-            });
         } else {
             dialogForm.close();
         }
