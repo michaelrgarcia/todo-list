@@ -11,9 +11,17 @@ const storedUserProjects = localStorage.getItem("user-projects");
 
 projects.push(allTaskProject, starredTasks, completedTasks);
 
-if (userProjectsArray && storedUserProjects) {
+if (storedUserProjects) {
     projects.push(...JSON.parse(storedUserProjects));
 }
+
+projects.forEach((project) => {
+    let storedTasks = localStorage.getItem(`${project.title}-tasks`);
+
+    if (storedTasks) {
+        project.tasks.push(...JSON.parse(storedTasks));
+    }
+});
 
 export function getProjects() {
     return projects;
