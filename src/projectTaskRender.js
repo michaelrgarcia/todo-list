@@ -1,11 +1,12 @@
-import { createProject, createTask, getProjects } from "./siteLogic";
+import { createProject, createTask, getProjects, getUserProjects } from "./siteLogic";
 import { getTaskFromDialog, getProjectFromDialog } from "./otherDomLogic";
 import elementCrafter from "./craftingTable";
 
 const projects = getProjects();
 const allTaskProject = projects[0];
 
-const userProjects = JSON.parse(localStorage.getItem("user-projects"));
+const userProjectsArray = getUserProjects();
+//const allTaskArchive = JSON.parse(localStorage.getItem("all-tasks-archive"));
 
 export function getTask(task) {
     const fullNumber = task.split(".");
@@ -67,7 +68,17 @@ export function domCreateTask() {
     if (title.value !== "") {
         const newTask = createTask(title.value, details.value, due.value, false, selectedProject.title, "0", selectedProjectIndex, false);
         selectedProject.tasks.push(newTask);
+
+        //localStorage.setItem(`${newTask.title}`, JSON.stringify(newTask));
+        //allTaskArchive.push(newTask);
+        //localStorage.setItem("all-tasks-archive", JSON.stringify(newTask));
+
         allTaskProject.tasks.push(newTask);
+
+        //localStorage.setItem(`${newTask.title}`, JSON.stringify(newTask));
+        //allTaskArchive.push(newTask);
+        //localStorage.setItem("all-tasks-archive", JSON.stringify(newTask));
+
         dialogForm.close();
         updateTasks(selectedProject);
     }
@@ -83,8 +94,8 @@ export function domCreateProject() {
         projects.push(newProject);
 
         localStorage.setItem(`${newProject.title}`, JSON.stringify(newProject));
-        userProjects.push(newProject);
-        localStorage.setItem("user-projects", JSON.stringify(userProjects));
+        userProjectsArray.push(newProject);
+        localStorage.setItem("user-projects", JSON.stringify(userProjectsArray));
 
         dialogForm.close();
         updateProjects();
