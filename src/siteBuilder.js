@@ -253,38 +253,6 @@ export function renamePrompt() {
     formElement.append(newName, submitButton);
 }
 
-export function projectSettingsPrompt() {
-    const dialogSelector = document.querySelector("dialog");
-    dialogSelector.showModal();
-
-    clearFormChangeTitle("Project Settings");
-    const formElement = document.querySelector("form > ul");
-
-    const renameProject = document.createElement("button");
-    renameProject.type = "button";
-    renameProject.classList.add("rename-project");
-    renameProject.textContent = "Rename";
-    
-    formElement.append(renameProject);
-}
-
-export function projectRenamePrompt() {
-    const dialogSelector = document.querySelector("dialog");
-    dialogSelector.showModal();
-
-    const formElement = document.querySelector("form > ul");
-    formElement.replaceChildren();
-
-    const newName = elementCrafter.textField("Title:", "new-project-title");
-
-    const submitButton = document.createElement("button");
-    submitButton.type = "submit";
-    submitButton.classList.add("confirm-new-project-title");
-    submitButton.textContent = "Done";
-
-    formElement.append(newName, submitButton);
-}
-
 export function infoPrompt() {
     const dialogSelector = document.querySelector("dialog");
     dialogSelector.showModal();
