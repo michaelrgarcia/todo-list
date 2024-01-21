@@ -118,6 +118,7 @@ export function completeTask(taskNum) {
                     if (task.ppIndex === desiredTask.ppIndex && 
                         task.number === desiredTask.number) {
                         project.tasks.splice(desiredTask.number, 1);
+                        localStorage.setItem(`${project.title}-tasks`, JSON.stringify(project.tasks));
                     }
                 });
             }
